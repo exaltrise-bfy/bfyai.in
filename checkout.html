@@ -1,45 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout — BFYAI</title>
-  <meta name="description" content="Secure subscription checkout for BFYAI." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Checkout — BFY</title>
+  <meta name="description" content="Secure subscription checkout." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/jpeg" href="images/bfy-logo.jpg" />
+  <link rel="stylesheet" crossorigin href="./assets/index-CDlDU07m.css" />
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
-<body class="page-checkout">
-  <a class="skip-link" href="#checkout-main">Skip to checkout</a>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="logo logo-wordmark" aria-label="BFYAI home">BFYAI</a>
-      <nav class="site-nav site-nav--simple" aria-label="Checkout">
-        <a href="index.html">Back to site</a>
-      </nav>
+<body class="min-h-screen bg-background text-foreground antialiased font-sans flex flex-col">
+  <header class="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <div class="container flex h-16 items-center justify-between px-4 md:px-8">
+      <a href="index.html" class="text-sm font-semibold tracking-tight hover:text-accent transition-colors">BFY</a>
+      <a href="index.html" class="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Back to site</a>
     </div>
   </header>
 
-  <main id="checkout-main" class="checkout-main">
-    <div class="checkout-card">
-      <h1>Secure checkout</h1>
-      <p class="checkout-lead">Complete payment for your plan. Open this page from your app-issued link so your session token is included.</p>
-      <p id="statusText" class="muted">Preparing session...</p>
-      <div id="summary" class="summary" hidden></div>
-      <div class="checkout-actions">
-        <button id="payBtn" class="btn btn-primary" type="button" disabled>Pay now</button>
-        <a href="index.html" class="btn btn-ghost">Back</a>
+  <main id="checkout-main" class="flex-1 flex items-center justify-center p-6">
+    <div class="w-full max-w-md rounded-xl border border-border bg-card text-card-foreground p-8 shadow-sm">
+      <h1 class="text-xl font-semibold tracking-tight mb-2">Secure checkout</h1>
+      <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
+        Open this page from your app-issued link so your session token is included in the URL.
+      </p>
+      <p id="statusText" class="text-sm text-muted-foreground mb-2">Preparing session…</p>
+      <div id="summary" class="hidden text-sm font-medium rounded-lg border border-border bg-muted/30 px-3 py-2 mb-4 font-mono"></div>
+      <div class="flex flex-wrap gap-3">
+        <button id="payBtn" class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground text-sm font-medium px-4 py-2.5 opacity-50 cursor-not-allowed disabled:pointer-events-none" type="button" disabled>Pay now</button>
+        <a href="index.html" class="inline-flex items-center justify-center rounded-md border border-border bg-transparent text-sm font-medium px-4 py-2.5 hover:bg-muted/50 transition-colors">Back</a>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer checkout-footer">
-    <div class="container footer-wrap">
-      <p class="footer-copy">&copy; <span id="year"></span> BFYAI</p>
-    </div>
+  <footer class="border-t border-border py-6 text-center text-xs text-muted-foreground">
+    <p>&copy; <span id="year"></span> BFY</p>
   </footer>
 
   <script>
@@ -57,20 +54,23 @@
     const payBtn = document.getElementById("payBtn");
     let session = null;
 
-    function setStatus(msg, type = "muted") {
-      statusText.className = type;
+    function setStatus(msg, kind) {
       statusText.textContent = msg;
+      statusText.className = "text-sm mb-2 ";
+      if (kind === "ok") statusText.className += " text-green-500";
+      else if (kind === "err") statusText.className += " text-destructive";
+      else statusText.className += " text-muted-foreground";
     }
 
     async function post(path, body) {
-      const r = await fetch(`${API_BASE}${path}`, {
+      const r = await fetch(API_BASE + path, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body),
       });
       if (!r.ok) {
         const t = await r.text();
-        throw new Error(t || `Request failed: ${r.status}`);
+        throw new Error(t || "Request failed: " + r.status);
       }
       return r.json();
     }
@@ -84,17 +84,19 @@
         const data = await post("/api/v1/payments/checkout/session", {token});
         session = data;
         summary.hidden = false;
-        summary.textContent = `Plan: ${data.plan} | Amount: ${(data.amount / 100).toFixed(2)} ${data.currency}`;
+        summary.classList.remove("hidden");
+        summary.textContent = "Plan: " + data.plan + " | Amount: " + (data.amount / 100).toFixed(2) + " " + data.currency;
         payBtn.disabled = false;
-        setStatus("Ready to pay.");
+        payBtn.classList.remove("opacity-50", "cursor-not-allowed");
+        setStatus("Ready to pay.", null);
       } catch (e) {
-        setStatus(`Session invalid or expired. ${String(e.message || e)}`, "err");
+        setStatus("Session invalid or expired. " + String(e.message || e), "err");
       }
     }
 
     async function verifyAndFinish(result) {
       try {
-        setStatus("Verifying payment...");
+        setStatus("Verifying payment…", null);
         await post("/api/v1/payments/checkout/verify-token", {
           token,
           razorpay_order_id: result.razorpay_order_id,
@@ -103,19 +105,19 @@
         });
         setStatus("Payment successful.", "ok");
       } catch (e) {
-        setStatus(`Payment verification failed. ${String(e.message || e)}`, "err");
+        setStatus("Payment verification failed. " + String(e.message || e), "err");
       }
     }
 
     function openCheckout() {
       if (!session) return;
-      const rz = new Razorpay({
+      var rz = new Razorpay({
         key: session.key_id,
         amount: session.amount,
         currency: session.currency,
         order_id: session.order_id,
         name: "CallManager Assistant",
-        description: `${session.plan} plan`,
+        description: session.plan + " plan",
         prefill: {
           name: session.name || "",
           email: session.email || "",
@@ -125,7 +127,7 @@
         theme: {color: "#fafafa"},
         modal: {
           ondismiss: function () {
-            setStatus("Payment cancelled.", "muted");
+            setStatus("Payment cancelled.", null);
           },
         },
       });
