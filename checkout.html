@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - bfyai</title>
+  <meta name="description" content="Secure subscription checkout for bfyai." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body class="checkout-page">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html#home" class="brand">
+        <span class="brand-name">bfya<span class="logo-i">ı</span></span>
+        <span class="brand-tag">built for <span class="brand-you">you</span></span>
+      </a>
+      <nav class="nav" aria-label="Checkout navigation">
+        <a href="index.html" class="store-card checkout-top-link">Back to site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="checkout-main">
+    <div class="checkout-layout">
+      <section class="checkout-column" aria-label="Plan details">
+        <h2 class="checkout-heading">Plan details</h2>
+        <div class="checkout-card checkout-info-card">
+          <div id="summary" class="checkout-summary" hidden>
+            <div class="checkout-row"><span>Plan</span><strong id="sumPlan">-</strong></div>
+            <div class="checkout-row"><span>Amount</span><strong id="sumAmount">-</strong></div>
+            <div class="checkout-row"><span>Currency</span><strong id="sumCurrency">-</strong></div>
+            <div class="checkout-row"><span>Billing</span><strong id="sumBilling">As per selected plan</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-column" aria-label="Secure checkout">
+        <h1 class="checkout-heading">Secure checkout</h1>
+        <div class="checkout-card checkout-action-card">
+          <p class="checkout-note">Payments processed securely by Razorpay. We do not store card details.</p>
+          <p id="statusText" class="checkout-status">Preparing session...</p>
+          <p id="orderRef" class="checkout-order-ref">Order reference: pending</p>
+          <p class="checkout-legal">
+            By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Policy</a>.
+          </p>
+          <div class="checkout-actions">
+            <button id="payBtn" class="btn btn-primary checkout-pay-btn" type="button" disabled>
+              Pay now
+            </button>
+            <a href="index.html" class="checkout-back-link">Back</a>
+          </div>
+          <p class="checkout-help">Need help? <a href="mailto:hello@bfyai.in">hello@bfyai.in</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">bfya<span class="footer-i">ı</span></span>
+      <span class="footer-copy">© <span id="year"></span> — <span class="footer-tagline">built for <span class="footer-you">you</span></span></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var y = document.getElementById("year");
+      if (y) y.textContent = String(new Date().getFullYear());
+
+      var API_BASE = "https://api.callmanager.app";
+      var token = (new URLSearchParams(window.location.search).get("token") || "").trim();
+
+      var statusText = document.getElementById("statusText");
+      var summary = document.getElementById("summary");
+      var sumPlan = document.getElementById("sumPlan");
+      var sumAmount = document.getElementById("sumAmount");
+      var sumCurrency = document.getElementById("sumCurrency");
+      var sumBilling = document.getElementById("sumBilling");
+      var orderRef = document.getElementById("orderRef");
+      var payBtn = document.getElementById("payBtn");
+      var session = null;
+
+      function shortRef(value) {
+        if (!value) return "pending";
+        if (value.length <= 12) return value;
+        return value.slice(0, 6) + "..." + value.slice(-4);
+      }
+
+      function setStatus(message, kind) {
+        statusText.textContent = message;
+        statusText.className = "checkout-status";
+        if (kind === "ok") statusText.classList.add("status-ok");
+        if (kind === "err") statusText.classList.add("status-err");
+      }
+
+      async function post(path, body) {
+        var r = await fetch(API_BASE + path, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        if (!r.ok) {
+          throw new Error("Request failed: " + r.status);
+        }
+        return r.json();
+      }
+
+      async function loadSession() {
+        if (!token) {
+          setStatus("Missing token. Please open checkout from the app.", "err");
+          return;
+        }
+
+        try {
+          var data = await post("/api/v1/payments/checkout/session", { token: token });
+          session = data;
+          summary.hidden = false;
+          sumPlan.textContent = data.plan || "Selected plan";
+          sumAmount.textContent = (data.amount / 100).toFixed(2) + " " + (data.currency || "");
+          sumCurrency.textContent = data.currency || "-";
+          sumBilling.textContent = data.billing_cycle || "As per selected plan";
+          orderRef.textContent = "Order reference: " + shortRef(data.order_id || data.session_id || "");
+
+          payBtn.disabled = false;
+          payBtn.classList.remove("is-disabled");
+          setStatus("Ready to pay.");
+        } catch (_e) {
+          setStatus("Session invalid or expired. Please request a new checkout link.", "err");
+        }
+      }
+
+      async function verifyAndFinish(result) {
+        try {
+          setStatus("Verifying payment...");
+          await post("/api/v1/payments/checkout/verify-token", {
+            token: token,
+            razorpay_order_id: result.razorpay_order_id,
+            razorpay_payment_id: result.razorpay_payment_id,
+            razorpay_signature: result.razorpay_signature
+          });
+          setStatus("Payment successful.", "ok");
+        } catch (_e) {
+          setStatus("Payment verification failed. Please try again.", "err");
+        }
+      }
+
+      function openCheckout() {
+        if (!session) return;
+
+        var rz = new Razorpay({
+          key: session.key_id,
+          amount: session.amount,
+          currency: session.currency,
+          order_id: session.order_id,
+          name: "bfyai",
+          description: session.plan + " plan",
+          prefill: {
+            name: session.name || "",
+            email: session.email || "",
+            contact: session.contact || ""
+          },
+          handler: verifyAndFinish,
+          theme: { color: "#f7b500" },
+          modal: {
+            ondismiss: function () {
+              setStatus("Payment cancelled.");
+            }
+          }
+        });
+        rz.open();
+      }
+
+      payBtn.addEventListener("click", openCheckout);
+      payBtn.classList.add("is-disabled");
+      loadSession();
+    })();
+  </script>
+</body>
+</html>
