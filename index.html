@@ -3,128 +3,282 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Call Manager AI - New Copy</title>
-  <meta name="description" content="Custom apps, AI assistants, and product solutions for communication and expense intelligence." />
+  <title>BFYAI — Built For You</title>
+  <meta name="description" content="BFYAI designs AI products and custom software for growing businesses. Senior engineers, real partnership, software built around how you work." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
-<body>
+<body class="page-marketing">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a href="#top" class="logo" aria-label="Call Manager AI home">
-        <span class="logo-mark">CM</span>
-        <span class="logo-text">Call Manager AI</span>
+      <a href="index.html#top" class="logo" aria-label="BFYAI Built For You home">
+        <span class="logo-mark">BFY</span>
+        <span class="logo-stack">
+          <span class="logo-text">BFYAI</span>
+          <span class="logo-sub">Built For You</span>
+        </span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav" id="siteNav">
-        <a href="#top">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#solutions">Solutions</a>
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
         <a href="#products">Products</a>
-        <a href="#checkout">Checkout</a>
-        <a href="#contact">Contact Us</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="checkout.html">Checkout</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero page-section">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">AI Products and Custom Apps.</p>
-          <h1>Build extraordinary products with practical AI.</h1>
-          <p class="hero-text">We craft custom applications and product experiences that turn your ideas into practical tools people use every day.</p>
-          <div class="hero-card">
-            <h3>What we focus on</h3>
-            <ul>
-              <li><strong>Practical AI, not experiments:</strong> We focus on real-world use cases where AI delivers measurable value - automation, decision support, and productivity.</li>
-              <li><strong>Designed for real workflows:</strong> We deeply understand how people actually work, then design products that fit naturally into their daily processes.</li>
-              <li><strong>Built to scale from day one:</strong> Our architecture supports growth from MVP to large-scale production without painful rewrites.</li>
-              <li><strong>Engineering you can rely on:</strong> We prioritize performance, security, and maintainability so your product keeps working as your business grows.</li>
-            </ul>
-          </div>
-          <div class="hero-actions">
-            <a href="#solutions" class="btn">Explore Solutions</a>
-            <a href="#products" class="btn btn-ghost">See Products</a>
-            <a href="#checkout" class="btn btn-ghost">Checkout</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="checkout" class="section page-section">
-      <div class="container">
-        <h2>Secure Checkout</h2>
-        <p id="statusText" class="section-note">Open this section from app-issued checkout link.</p>
-        <div id="summary" class="summary" hidden></div>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Built For You</p>
+        <h1 id="hero-title" class="display-title">Your edge, built in code.</h1>
+        <p class="hero-lead">
+          BFYAI designs the AI products and custom software that help small and mid-size businesses operate like teams ten times their size.
+          Senior engineers. Real partnership. Software built around the way you work.
+        </p>
         <div class="hero-actions">
-          <button id="payBtn" class="btn" type="button" disabled>Pay now</button>
+          <a href="#contact" class="btn btn-primary">Work with us</a>
+          <a href="#products" class="btn btn-ghost">Explore our tools</a>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section page-section section-about">
+    <section class="section section-pillars" aria-labelledby="pillars-heading">
       <div class="container">
-        <h2>About Us</h2>
-        <p>
-          At [Your Company Name], we craft custom apps tailored to your unique needs, turning ideas into powerful tools.
-          We've already built our own AI-powered Call Manager, proving our edge in innovative tech.
-          From startups to enterprises, we deliver seamless, scalable solutions that drive results.
-          Our team of expert developers combines creativity with cutting-edge AI to solve real-world problems.
-          Partner with us to future-proof your business - let's build something extraordinary together.
-        </p>
+        <h2 id="pillars-heading" class="visually-hidden">Why BFYAI</h2>
+        <ul class="pillars">
+          <li class="pillar-card">
+            <span class="pillar-num" aria-hidden="true">01</span>
+            <p class="pillar-kicker">Craft</p>
+            <h3 class="pillar-title">Senior craftsmanship</h3>
+            <p class="pillar-body">No junior teams learning on your dime. We assign seasoned engineers who write clean, maintainable code.</p>
+          </li>
+          <li class="pillar-card">
+            <span class="pillar-num" aria-hidden="true">02</span>
+            <p class="pillar-kicker">Focus</p>
+            <h3 class="pillar-title">Practical AI</h3>
+            <p class="pillar-body">We deploy intelligence where it matters. Not hype wrappers, but actual workflow automation and leverage.</p>
+          </li>
+          <li class="pillar-card">
+            <span class="pillar-num" aria-hidden="true">03</span>
+            <p class="pillar-kicker">Partnership</p>
+            <h3 class="pillar-title">True partners</h3>
+            <p class="pillar-body">We answer the phone. We understand your business domain before writing a single line of code.</p>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="solutions" class="section section-alt section-solutions page-section">
+    <section class="section section-tight" id="products" aria-labelledby="products-heading">
       <div class="container">
-        <h2>Our Solutions</h2>
-        <p class="section-note">Explore our service offerings.</p>
-        <div class="carousel" data-carousel>
-          <div class="carousel-track">
-            <article class="card carousel-slide"><h3>AI Workforce Developer</h3><p>Automating repetitive tasks and boosting productivity.</p></article>
-            <article class="card carousel-slide"><h3>Chat with Text and Voice Assistant</h3><p>Intelligent text and voice interactions for support.</p></article>
-            <article class="card carousel-slide"><h3>Web Designing</h3><p>Responsive websites with strong UI/UX and speed.</p></article>
-            <article class="card carousel-slide"><h3>Custom Android and iOS Apps</h3><p>High-performance apps built for real business outcomes.</p></article>
+        <header class="section-head">
+          <p class="section-kicker">Products</p>
+          <h2 id="products-heading" class="section-title">Tools that just work.</h2>
+          <p class="section-lead">
+            Opinionated, beautifully designed tools that solve real operational problems. Deployed for you, managed by us.
+          </p>
+        </header>
+        <div class="product-grid">
+          <article class="product-card product-card-feature">
+            <p class="product-badge">Flagship app · Product 01</p>
+            <h3 class="product-name">BFYAI Call Suite</h3>
+            <p class="product-desc">
+              Our flagship AI-powered call manager. Screens incoming calls, takes intelligent messages, and summarizes every conversation
+              so nothing important slips by. The assistant your phone always wanted.
+            </p>
+            <a href="#contact" class="text-link">Learn more</a>
+          </article>
+          <article class="product-card">
+            <p class="product-badge muted">Product 02</p>
+            <h3 class="product-name">AI Call Assistant</h3>
+            <p class="product-desc">
+              An intelligent voice agent that answers, qualifies, books, and follows up on calls 24/7 — purpose-built for businesses
+              that want every lead handled with care and consistency.
+            </p>
+            <a href="#contact" class="text-link">Learn more</a>
+          </article>
+          <article class="product-card">
+            <p class="product-badge muted">Product 03</p>
+            <h3 class="product-name">Expense Tracker</h3>
+            <p class="product-desc">
+              A clean, opinionated way for teams to capture spending, categorize automatically, and see where money actually goes.
+              Receipts attached, reports ready.
+            </p>
+            <a href="#contact" class="text-link">Learn more</a>
+          </article>
+          <article class="product-card">
+            <p class="product-badge muted">Product 04</p>
+            <h3 class="product-name">Analytics Dashboard</h3>
+            <p class="product-desc">
+              A unified dashboard that pulls signals from the tools you already use and turns them into the handful of numbers
+              that actually matter to your business.
+            </p>
+            <a href="#contact" class="text-link">Learn more</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Services</p>
+          <h2 id="services-heading" class="section-title">Bespoke solutions.</h2>
+          <p class="section-lead">
+            When off-the-shelf isn&apos;t enough, we build custom solutions tailored precisely to your operational needs.
+          </p>
+        </header>
+        <div class="service-grid">
+          <article class="service-card">
+            <p class="service-num">Service 01</p>
+            <h3 class="service-title">AI Workforce Deployment</h3>
+            <p class="service-body">
+              We deploy AI agents that handle research, outreach, scheduling, support tickets, and back-office workflows
+              so a small team operates with massive leverage.
+            </p>
+            <a href="#contact" class="btn btn-outline btn-sm">Discuss this service</a>
+          </article>
+          <article class="service-card">
+            <p class="service-num">Service 02</p>
+            <h3 class="service-title">Chat &amp; Voice Support Hub</h3>
+            <p class="service-body">
+              Embeddable, branded customer support that handles both typed conversations and live voice calls, escalating cleanly
+              to human operators when nuanced judgment is required.
+            </p>
+            <a href="#contact" class="btn btn-outline btn-sm">Discuss this service</a>
+          </article>
+          <article class="service-card">
+            <p class="service-num">Service 03</p>
+            <h3 class="service-title">Custom Applications</h3>
+            <p class="service-body">
+              Bespoke Android, iOS apps, and web platforms designed and engineered end-to-end for your exact brand and workflow.
+              Shipped fast and supported long-term.
+            </p>
+            <a href="#contact" class="btn btn-outline btn-sm">Discuss this service</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Process</p>
+          <h2 id="process-heading" class="section-title">How we work.</h2>
+          <p class="section-lead">A calm, predictable process designed to deliver results without the drama.</p>
+        </header>
+        <ol class="process-track">
+          <li class="process-step">
+            <span class="process-num">01</span>
+            <h3 class="process-title">Discovery</h3>
+            <p class="process-body">We audit your workflows, identify bottlenecks, and define clear technical objectives.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">02</span>
+            <h3 class="process-title">Architecture</h3>
+            <p class="process-body">We design a scalable, secure architecture and present a concrete roadmap and timeline.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">03</span>
+            <h3 class="process-title">Execution</h3>
+            <p class="process-body">We build. You get weekly updates and continuous access to staging environments.</p>
+          </li>
+          <li class="process-step">
+            <span class="process-num">04</span>
+            <h3 class="process-title">Handover</h3>
+            <p class="process-body">We deploy to production, train your team, and provide ongoing maintenance.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="about" aria-labelledby="about-heading">
+      <div class="container about-grid">
+        <header class="section-head section-head-narrow">
+          <p class="section-kicker">About BFYAI</p>
+          <h2 id="about-heading" class="section-title">Built by humans.</h2>
+        </header>
+        <div class="about-copy">
+          <p>
+            Software has become sterile. Enterprise tools are often bloated, confusing, and designed for procurement teams
+            rather than the people actually doing the work.
+          </p>
+          <p>
+            At BFYAI, we believe in a return to craftsmanship. We are a small, senior team of designers and engineers who genuinely
+            care about the businesses we partner with. When you call us, you speak directly to the people writing your code.
+          </p>
+          <p class="about-strong">
+            We don&apos;t just hand you an API key and wish you luck. We build, deploy, and refine. We are your technical partners.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="container container-narrow">
+        <header class="section-head">
+          <p class="section-kicker">FAQ</p>
+          <h2 id="faq-heading" class="section-title">Questions.</h2>
+        </header>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Do you work with startups or established businesses?</summary>
+            <p>Both. We tailor engagement depth and pace to stage — from proving a first workflow to hardening systems at scale.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do you price your projects?</summary>
+            <p>We scope fixed phases where clarity is high, and time-and-materials or retainer models when exploration is part of the value. Every proposal includes a clear milestone map.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do we own the intellectual property?</summary>
+            <p>Yes. Deliverables are structured so you own what we build for you, with sensible exceptions only where third-party licenses require otherwise — always disclosed upfront.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is your typical timeline?</summary>
+            <p>Discovery through first production slice is often weeks, not months, for focused tools. Larger platforms are phased so you get value continuously, not at the end of a black box.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you provide ongoing support?</summary>
+            <p>We offer maintenance retainers, on-call coverage, and iterative improvement cycles so your software keeps pace with your business.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-heading" class="section-title">Let&apos;s build.</h2>
+          <p class="section-lead">
+            Whether you need a custom AI workforce or want to deploy our managed tools, we&apos;re ready to move fast.
+          </p>
+        </header>
+        <div class="contact-panel">
+          <div class="contact-grid">
+            <div class="contact-block">
+              <p class="contact-label">Email</p>
+              <p><a href="mailto:hello@callmanager.ai">hello@callmanager.ai</a></p>
+            </div>
+            <div class="contact-block">
+              <p class="contact-label">Phone</p>
+              <p><a href="tel:+919000000000">+91 90000 00000</a></p>
+            </div>
+            <div class="contact-block">
+              <p class="contact-label">Location</p>
+              <p>Bengaluru, India</p>
+            </div>
           </div>
-          <button class="carousel-btn prev" type="button" data-dir="-1" aria-label="Previous solution">&#10094;</button>
-          <button class="carousel-btn next" type="button" data-dir="1" aria-label="Next solution">&#10095;</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="products" class="section section-products page-section">
-      <div class="container">
-        <h2>Products</h2>
-        <p class="section-note">Our focused platforms for communication and expense intelligence.</p>
-        <div class="carousel" data-carousel>
-          <div class="carousel-track">
-            <article class="card carousel-slide"><h3>AI Call Assistant</h3><p>Answers unknown calls and summarizes clearly.</p></article>
-            <article class="card carousel-slide"><h3>Expense Tracker</h3><p>Reads and categorizes SMS alerts into spend logs.</p></article>
-            <article class="card carousel-slide"><h3>Analytics</h3><p>Actionable insights from communication and spending data.</p></article>
-          </div>
-          <button class="carousel-btn prev" type="button" data-dir="-1" aria-label="Previous product">&#10094;</button>
-          <button class="carousel-btn next" type="button" data-dir="1" aria-label="Next product">&#10095;</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-alt page-section section-contact">
-      <div class="container contact">
-        <h2>CONTACT US</h2>
-        <p class="contact-intro">
-          <span>Ready to build your custom app or explore our products?</span>
-          <span class="section-note">Get in Touch</span>
-        </p>
-        <div class="contact-grid">
-          <p><strong>Email:</strong> hello@callmanager.ai</p>
-          <p><strong>Phone:</strong> +91 90000 00000</p>
-          <p><strong>Location:</strong> Bengaluru, India</p>
         </div>
       </div>
     </section>
@@ -132,7 +286,8 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>&copy; <span id="year"></span> Call Manager AI. All rights reserved.</p>
+      <p class="footer-brand"><span class="footer-mark">BFYAI</span> · Built For You</p>
+      <p class="footer-copy">&copy; <span id="year"></span> BFYAI. All rights reserved.</p>
     </div>
   </footer>
 
