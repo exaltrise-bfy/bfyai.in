@@ -74,8 +74,13 @@
       var y = document.getElementById("year");
       if (y) y.textContent = String(new Date().getFullYear());
 
-      var API_BASE = "https://api.callmanager.app";
-      var token = (new URLSearchParams(window.location.search).get("token") || "").trim();
+      var params = new URLSearchParams(window.location.search);
+      var apiBaseParam = (params.get("api_base") || "").trim();
+      var API_BASE = apiBaseParam || "https://api.callmanager.app";
+      var token = (params.get("token") || "").trim();
+      if (!token && window.location.hash) {
+        token = (new URLSearchParams(window.location.hash.replace(/^#/, "")).get("token") || "").trim();
+      }
 
       var statusText = document.getElementById("statusText");
       var summary = document.getElementById("summary");
