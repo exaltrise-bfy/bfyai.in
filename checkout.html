@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout — BFYAI · Built For You</title>
+  <title>Checkout — BFYAI</title>
   <meta name="description" content="Secure subscription checkout for BFYAI." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/jpeg" href="images/bfy-logo.jpg" />
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body class="page-checkout">
   <a class="skip-link" href="#checkout-main">Skip to checkout</a>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="logo" aria-label="BFYAI Built For You home">
-        <span class="logo-mark">BFY</span>
-        <span class="logo-stack">
-          <span class="logo-text">BFYAI</span>
-          <span class="logo-sub">Built For You</span>
-        </span>
-      </a>
-      <nav class="site-nav" aria-label="Checkout">
+      <a href="index.html" class="logo logo-wordmark" aria-label="BFYAI home">BFYAI</a>
+      <nav class="site-nav site-nav--simple" aria-label="Checkout">
         <a href="index.html">Back to site</a>
       </nav>
     </div>
@@ -43,7 +38,7 @@
 
   <footer class="site-footer checkout-footer">
     <div class="container footer-wrap">
-      <p class="footer-copy">&copy; <span id="year"></span> BFYAI · Built For You</p>
+      <p class="footer-copy">&copy; <span id="year"></span> BFYAI</p>
     </div>
   </footer>
 
@@ -53,7 +48,6 @@
       if (y) y.textContent = String(new Date().getFullYear());
     })();
 
-    // Set this to your deployed backend API origin
     const API_BASE = "https://api.callmanager.app";
 
     const params = new URLSearchParams(window.location.search);
@@ -128,7 +122,7 @@
           contact: session.contact || "",
         },
         handler: verifyAndFinish,
-        theme: {color: "#e4e4e7"},
+        theme: {color: "#fafafa"},
         modal: {
           ondismiss: function () {
             setStatus("Payment cancelled.", "muted");

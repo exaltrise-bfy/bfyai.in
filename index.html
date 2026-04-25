@@ -7,20 +7,15 @@
   <meta name="description" content="BFYAI designs AI products and custom software for growing businesses. Senior engineers, real partnership, software built around how you work." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/jpeg" href="images/bfy-logo.jpg" />
 </head>
 <body class="page-marketing">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a href="index.html#top" class="logo" aria-label="BFYAI Built For You home">
-        <span class="logo-mark">BFY</span>
-        <span class="logo-stack">
-          <span class="logo-text">BFYAI</span>
-          <span class="logo-sub">Built For You</span>
-        </span>
-      </a>
+      <a href="index.html#top" class="logo logo-wordmark" aria-label="BFYAI home">BFYAI</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -38,7 +33,20 @@
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <img
+        class="hero-sheet"
+        src="images/hero-bg.png"
+        alt=""
+        width="1920"
+        height="1080"
+        decoding="async"
+        fetchpriority="high"
+        aria-hidden="true"
+      />
+      <div class="hero-grid-lines" aria-hidden="true"></div>
+      <div class="hero-fade hero-fade--top" aria-hidden="true"></div>
+      <div class="hero-fade hero-fade--sides" aria-hidden="true"></div>
       <div class="container hero-inner">
         <p class="eyebrow">Built For You</p>
         <h1 id="hero-title" class="display-title">Your edge, built in code.</h1>
@@ -90,40 +98,60 @@
         </header>
         <div class="product-grid">
           <article class="product-card product-card-feature">
-            <p class="product-badge">Flagship app · Product 01</p>
-            <h3 class="product-name">BFYAI Call Suite</h3>
-            <p class="product-desc">
-              Our flagship AI-powered call manager. Screens incoming calls, takes intelligent messages, and summarizes every conversation
-              so nothing important slips by. The assistant your phone always wanted.
-            </p>
-            <a href="#contact" class="text-link">Learn more</a>
+            <div class="product-visual">
+              <img src="images/product-bfy-app.png" alt="" width="800" height="600" decoding="async" />
+            </div>
+            <div class="product-copy">
+              <p class="product-badge">Flagship app · Product 01</p>
+              <h3 class="product-name">BFYAI Call Suite</h3>
+              <p class="product-desc">
+                Our flagship AI-powered call manager. Screens incoming calls, takes intelligent messages, and summarizes every conversation
+                so nothing important slips by. The assistant your phone always wanted.
+              </p>
+              <a href="#contact" class="text-link">Learn more</a>
+            </div>
           </article>
           <article class="product-card">
-            <p class="product-badge muted">Product 02</p>
-            <h3 class="product-name">AI Call Assistant</h3>
-            <p class="product-desc">
-              An intelligent voice agent that answers, qualifies, books, and follows up on calls 24/7 — purpose-built for businesses
-              that want every lead handled with care and consistency.
-            </p>
-            <a href="#contact" class="text-link">Learn more</a>
+            <div class="product-visual product-visual--sm">
+              <img src="images/product-call-assistant.png" alt="" width="640" height="480" decoding="async" />
+            </div>
+            <div class="product-copy">
+              <p class="product-badge muted">Product 02</p>
+              <h3 class="product-name">AI Call Assistant</h3>
+              <p class="product-desc">
+                An intelligent voice agent that answers, qualifies, books, and follows up on calls 24/7 — purpose-built for businesses
+                that want every lead handled with care and consistency.
+              </p>
+              <a href="#contact" class="text-link">Learn more</a>
+            </div>
           </article>
           <article class="product-card">
-            <p class="product-badge muted">Product 03</p>
-            <h3 class="product-name">Expense Tracker</h3>
-            <p class="product-desc">
-              A clean, opinionated way for teams to capture spending, categorize automatically, and see where money actually goes.
-              Receipts attached, reports ready.
-            </p>
-            <a href="#contact" class="text-link">Learn more</a>
+            <div class="product-visual product-visual--sm">
+              <img src="images/product-expense.png" alt="" width="640" height="480" decoding="async" />
+            </div>
+            <div class="product-copy">
+              <p class="product-badge muted">Product 03</p>
+              <h3 class="product-name">Expense Tracker</h3>
+              <p class="product-desc">
+                A clean, opinionated way for teams to capture spending, categorize automatically, and see where money actually goes.
+                Receipts attached, reports ready.
+              </p>
+              <a href="#contact" class="text-link">Learn more</a>
+            </div>
           </article>
           <article class="product-card">
-            <p class="product-badge muted">Product 04</p>
-            <h3 class="product-name">Analytics Dashboard</h3>
-            <p class="product-desc">
-              A unified dashboard that pulls signals from the tools you already use and turns them into the handful of numbers
-              that actually matter to your business.
-            </p>
-            <a href="#contact" class="text-link">Learn more</a>
+            <div class="product-visual product-visual--sm">
+              <img src="images/product-analytics.png" alt="" width="640" height="480" decoding="async" />
+            </div>
+            <div class="product-copy">
+              <p class="product-badge muted">Product 04</p>
+              <h3 class="product-name">Analytics Dashboard</h3>
+              <p class="product-desc">
+                A unified dashboard that pulls signals from the tools you already use and turns them into the handful of numbers
+                that actually matter to your business.
+              </p>
+              <a href="#contact" class="text-link">Learn more</a>
+            </div>
           </article>
         </div>
       </div>
@@ -140,6 +168,9 @@
         </header>
         <div class="service-grid">
           <article class="service-card">
+            <div class="service-visual">
+              <img src="images/service-ai-workforce.png" alt="" width="720" height="480" decoding="async" />
+            </div>
             <p class="service-num">Service 01</p>
             <h3 class="service-title">AI Workforce Deployment</h3>
             <p class="service-body">
@@ -149,6 +180,9 @@
             <a href="#contact" class="btn btn-outline btn-sm">Discuss this service</a>
           </article>
           <article class="service-card">
+            <div class="service-visual">
+              <img src="images/service-support.png" alt="" width="720" height="480" decoding="async" />
+            </div>
             <p class="service-num">Service 02</p>
             <h3 class="service-title">Chat &amp; Voice Support Hub</h3>
             <p class="service-body">
@@ -158,6 +192,9 @@
             <a href="#contact" class="btn btn-outline btn-sm">Discuss this service</a>
           </article>
           <article class="service-card">
+            <div class="service-visual">
+              <img src="images/service-custom-apps.png" alt="" width="720" height="480" decoding="async" />
+            </div>
             <p class="service-num">Service 03</p>
             <h3 class="service-title">Custom Applications</h3>
             <p class="service-body">
@@ -179,21 +216,25 @@
         </header>
         <ol class="process-track">
           <li class="process-step">
+            <div class="process-visual"><img src="images/process-discovery.png" alt="" width="560" height="360" decoding="async" /></div>
             <span class="process-num">01</span>
             <h3 class="process-title">Discovery</h3>
             <p class="process-body">We audit your workflows, identify bottlenecks, and define clear technical objectives.</p>
           </li>
           <li class="process-step">
+            <div class="process-visual"><img src="images/process-architecture.png" alt="" width="560" height="360" decoding="async" /></div>
             <span class="process-num">02</span>
             <h3 class="process-title">Architecture</h3>
             <p class="process-body">We design a scalable, secure architecture and present a concrete roadmap and timeline.</p>
           </li>
           <li class="process-step">
+            <div class="process-visual"><img src="images/process-execution.png" alt="" width="560" height="360" decoding="async" /></div>
             <span class="process-num">03</span>
             <h3 class="process-title">Execution</h3>
             <p class="process-body">We build. You get weekly updates and continuous access to staging environments.</p>
           </li>
           <li class="process-step">
+            <div class="process-visual"><img src="images/process-handover.png" alt="" width="560" height="360" decoding="async" /></div>
             <span class="process-num">04</span>
             <h3 class="process-title">Handover</h3>
             <p class="process-body">We deploy to production, train your team, and provide ongoing maintenance.</p>
@@ -202,7 +243,9 @@
       </div>
     </section>
 
-    <section class="section section-alt" id="about" aria-labelledby="about-heading">
+    <section class="section section-about" id="about" aria-labelledby="about-heading">
+      <img class="about-bg" src="images/about-bg.png" alt="" width="1920" height="1080" decoding="async" aria-hidden="true" />
+      <div class="about-scrim" aria-hidden="true"></div>
       <div class="container about-grid">
         <header class="section-head section-head-narrow">
           <p class="section-kicker">About BFYAI</p>
@@ -286,8 +329,7 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p class="footer-brand"><span class="footer-mark">BFYAI</span> · Built For You</p>
-      <p class="footer-copy">&copy; <span id="year"></span> BFYAI. All rights reserved.</p>
+      <p class="footer-copy">&copy; <span id="year"></span> BFYAI</p>
     </div>
   </footer>
 
