@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -25,6 +26,7 @@
         <a href="#about">About Us</a>
         <a href="#solutions">Solutions</a>
         <a href="#products">Products</a>
+        <a href="#checkout">Checkout</a>
         <a href="#contact">Contact Us</a>
       </nav>
     </div>
@@ -49,7 +51,19 @@
           <div class="hero-actions">
             <a href="#solutions" class="btn">Explore Solutions</a>
             <a href="#products" class="btn btn-ghost">See Products</a>
+            <a href="#checkout" class="btn btn-ghost">Checkout</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="section page-section">
+      <div class="container">
+        <h2>Secure Checkout</h2>
+        <p id="statusText" class="section-note">Open this section from app-issued checkout link.</p>
+        <div id="summary" class="summary" hidden></div>
+        <div class="hero-actions">
+          <button id="payBtn" class="btn" type="button" disabled>Pay now</button>
         </div>
       </div>
     </section>
@@ -73,62 +87,10 @@
         <p class="section-note">Explore our service offerings.</p>
         <div class="carousel" data-carousel>
           <div class="carousel-track">
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>AI Workforce Developer</h3>
-                  <p>Supercharge your team with our AI Workforce Developer, automating repetitive tasks and boosting productivity.</p>
-                  <ul class="slide-points">
-                    <li>Train custom AI agents for your workflows</li>
-                    <li>Handles data analysis, scheduling, and more</li>
-                    <li>Scalable and secure 24/7 efficiency</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-ai"></div>
-              </div>
-            </article>
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>Chat with Text and Voice Assistant</h3>
-                  <p>Engage customers effortlessly with our intelligent Chat Assistant, supporting text and voice interactions.</p>
-                  <ul class="slide-points">
-                    <li>Instant responses with advanced AI</li>
-                    <li>Answers queries and personalizes experiences</li>
-                    <li>Ideal for websites, apps, and support lines</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-chat"></div>
-              </div>
-            </article>
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>Web Designing</h3>
-                  <p>We design stunning, responsive websites that captivate users from sleek UI/UX to e-commerce platforms.</p>
-                  <ul class="slide-points">
-                    <li>Optimized for speed and mobile-first performance</li>
-                    <li>Custom, pixel-perfect design execution</li>
-                    <li>Strong digital presence for your brand</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-web"></div>
-              </div>
-            </article>
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>Custom Android and iOS Apps</h3>
-                  <p>Launch high-performance apps for Android and iOS, built specifically for business owners like you.</p>
-                  <ul class="slide-points">
-                    <li>Concept to app store deployment</li>
-                    <li>Native features for strong engagement</li>
-                    <li>Secure monetization and ongoing support</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-mobile"></div>
-              </div>
-            </article>
+            <article class="card carousel-slide"><h3>AI Workforce Developer</h3><p>Automating repetitive tasks and boosting productivity.</p></article>
+            <article class="card carousel-slide"><h3>Chat with Text and Voice Assistant</h3><p>Intelligent text and voice interactions for support.</p></article>
+            <article class="card carousel-slide"><h3>Web Designing</h3><p>Responsive websites with strong UI/UX and speed.</p></article>
+            <article class="card carousel-slide"><h3>Custom Android and iOS Apps</h3><p>High-performance apps built for real business outcomes.</p></article>
           </div>
           <button class="carousel-btn prev" type="button" data-dir="-1" aria-label="Previous solution">&#10094;</button>
           <button class="carousel-btn next" type="button" data-dir="1" aria-label="Next solution">&#10095;</button>
@@ -142,48 +104,9 @@
         <p class="section-note">Our focused platforms for communication and expense intelligence.</p>
         <div class="carousel" data-carousel>
           <div class="carousel-track">
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>AI Call Assistant</h3>
-                  <p>Our AI Call Assistant answers your unknown calls automatically, so you never miss important messages.</p>
-                  <ul class="slide-points">
-                    <li>Listens, understands, and summarizes clearly</li>
-                    <li>Preferred-language summaries without barriers</li>
-                    <li>Works across India with multiple Indian languages</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-call"></div>
-              </div>
-            </article>
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>Expense Tracker</h3>
-                  <p>Track every expense effortlessly with our AI-powered Expense Tracker that reads and categorizes SMS alerts.</p>
-                  <ul class="slide-points">
-                    <li>Converts transactions into clean spend lists</li>
-                    <li>Daily expenses logged and tagged in real time</li>
-                    <li>Better visibility and control over spending</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-expense"></div>
-              </div>
-            </article>
-            <article class="card carousel-slide">
-              <div class="slide-grid">
-                <div class="slide-content">
-                  <h3>Analytics</h3>
-                  <p>Get powerful insights from your spending data with our AI-driven Analytics dashboard. Identify trends, detect...</p>
-                  <ul class="slide-points">
-                    <li>Trend discovery across spend categories</li>
-                    <li>Actionable dashboards for better decisions</li>
-                    <li>Deeper visibility into money movement</li>
-                  </ul>
-                </div>
-                <div class="slide-media media-console"></div>
-              </div>
-            </article>
+            <article class="card carousel-slide"><h3>AI Call Assistant</h3><p>Answers unknown calls and summarizes clearly.</p></article>
+            <article class="card carousel-slide"><h3>Expense Tracker</h3><p>Reads and categorizes SMS alerts into spend logs.</p></article>
+            <article class="card carousel-slide"><h3>Analytics</h3><p>Actionable insights from communication and spending data.</p></article>
           </div>
           <button class="carousel-btn prev" type="button" data-dir="-1" aria-label="Previous product">&#10094;</button>
           <button class="carousel-btn next" type="button" data-dir="1" aria-label="Next product">&#10095;</button>
@@ -200,35 +123,8 @@
         </p>
         <div class="contact-grid">
           <p><strong>Email:</strong> hello@callmanager.ai</p>
-          <p>
-            <strong class="contact-phone-label">
-              <span class="contact-icon phone" aria-hidden="true">📞</span>
-              <span class="contact-icon whatsapp-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M19.1 4.9A9.93 9.93 0 0 0 12.04 2C6.54 2 2.07 6.48 2.07 11.99c0 1.76.46 3.49 1.34 5.01L2 22l5.12-1.34a9.92 9.92 0 0 0 4.9 1.25h.01c5.5 0 9.98-4.48 9.98-10 0-2.67-1.04-5.18-2.93-7.01Zm-7.06 15.29h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.04.8.81-2.97-.2-.31a8.24 8.24 0 0 1-1.27-4.39c0-4.56 3.71-8.28 8.28-8.28 2.21 0 4.29.86 5.86 2.43a8.2 8.2 0 0 1 2.43 5.85c0 4.56-3.72 8.29-8.37 8.2Zm4.54-6.18c-.25-.12-1.47-.72-1.7-.8-.23-.09-.39-.12-.56.12-.16.24-.64.8-.78.96-.14.16-.28.18-.53.06-.25-.12-1.05-.39-2.01-1.24-.75-.67-1.25-1.49-1.39-1.74-.14-.24-.01-.37.11-.49.11-.11.25-.28.37-.41.13-.14.17-.24.25-.4.08-.16.04-.3-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.3-.23.24-.87.85-.87 2.08 0 1.22.89 2.41 1.01 2.57.12.16 1.75 2.67 4.24 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.17.21-.57.21-1.06.15-1.17-.06-.11-.22-.18-.47-.3Z"/>
-                </svg>
-              </span>
-            </strong>
-            +91 90000 00000
-          </p>
+          <p><strong>Phone:</strong> +91 90000 00000</p>
           <p><strong>Location:</strong> Bengaluru, India</p>
-        </div>
-        <div class="social-links" aria-label="Social media links">
-          <a href="https://google.com" class="social-link linkedin" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.95v5.67H9.33V9h3.42v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45Z"/>
-            </svg>
-          </a>
-          <a href="https://google.com" class="social-link facebook" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M13.5 8.5V6.7c0-.65.43-.8.73-.8h1.73V3h-2.38C10.7 3 10 5.1 10 6.45V8.5H8v3h2V21h3.5v-9.5h2.33l.34-3H13.5Z"/>
-            </svg>
-          </a>
-          <a href="https://google.com" class="social-link instagram" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 7.84A4.16 4.16 0 1 0 16.16 12 4.16 4.16 0 0 0 12 7.84Zm0 6.86A2.7 2.7 0 1 1 14.7 12 2.7 2.7 0 0 1 12 14.7Zm5.3-7.03a.97.97 0 1 1-.97-.97.97.97 0 0 1 .97.97ZM21 7.69c-.04-1.4-.39-2.63-1.41-3.64-1.01-1.02-2.24-1.37-3.64-1.41C14.54 2.6 9.46 2.6 8.05 2.64c-1.4.04-2.63.39-3.64 1.41-1.02 1.01-1.37 2.24-1.41 3.64C2.6 9.1 2.6 14.18 2.64 15.6c.04 1.4.39 2.63 1.41 3.64 1.01 1.02 2.24 1.37 3.64 1.41 1.41.04 6.49.04 7.9 0 1.4-.04 2.63-.39 3.64-1.41 1.02-1.01 1.37-2.24 1.41-3.64.04-1.42.04-6.5 0-7.91Zm-1.73 9.6c-.3.75-.88 1.33-1.63 1.63-1.13.45-3.82.34-5.64.34s-4.52.11-5.64-.34a2.72 2.72 0 0 1-1.63-1.63c-.45-1.13-.34-3.82-.34-5.64s-.11-4.52.34-5.64c.3-.75.88-1.33 1.63-1.63C7.49 3.93 10.18 4.04 12 4.04s4.52-.11 5.64.34c.75.3 1.33.88 1.63 1.63.45 1.12.34 3.82.34 5.64s.11 4.51-.34 5.64Z"/>
-            </svg>
-          </a>
         </div>
       </div>
     </section>
