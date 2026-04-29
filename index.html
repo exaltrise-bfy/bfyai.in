@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>built for you - personal call and expense assistant</title>
+  <title>built for you - personal SpendsSense</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +44,8 @@
         <h1 class="hero-title">
           <span class="headline-line">Your <span class="text-highlight">Edge</span>, built with <span class="text-highlight">AI</span></span>
         </h1>
-        <p class="hero-lead">Get the app on your device.</p>
+        <p class="hero-lead">Personal SpendSense - a bfya<span class="logo-i">ı</span> flagship app</p>
+        <p class="hero-sublead">Get the app on your device.</p>
         <div class="store-row" role="group" aria-label="App downloads">
           <a href="#" class="store-card store-android" aria-label="Download on Android (link TBD)">
             <span class="store-icon" aria-hidden="true">
@@ -79,36 +80,36 @@
           <span class="section-word section-highlight">Products</span>
         </h2>
 
-        <section class="product-page" id="product-calls">
-          <h3 class="product-page-title">Call Assistant</h3>
-          <div class="product-media-grid">
-            <figure class="media-placeholder">
-              <div class="media-box">
-                <img src="call1.jpeg" alt="Call screen 1" loading="lazy" />
-              </div>
-            </figure>
-            <figure class="media-placeholder">
-              <div class="media-box">
-                <img src="call2.jpeg" alt="Call screen 2" loading="lazy" />
-              </div>
-            </figure>
-          </div>
-        </section>
-
         <section class="product-page" id="product-expenses">
-          <h3 class="product-page-title">Expense Insights</h3>
+          <h3 class="product-page-title">SpendSence</h3>
           <div class="product-media-grid">
             <figure class="media-placeholder">
               <div class="media-box">
                 <img src="expense1.jpeg" alt="Expense screen 1" loading="lazy" />
               </div>
-              <figcaption>Expense view preview 1</figcaption>
             </figure>
             <figure class="media-placeholder">
               <div class="media-box">
                 <img src="expense2.jpeg" alt="Expense screen 2" loading="lazy" />
               </div>
-              <figcaption>Expense view preview 2</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="product-page" id="product-calls">
+          <h3 class="product-page-title">Call Assistant</h3>
+          <div class="product-media-grid">
+            <figure class="media-placeholder">
+              <div class="media-box media-box--blur">
+                <img src="call1.jpeg" alt="Call screen 1" loading="lazy" />
+                <div class="early-access-badge" aria-hidden="true">Build in Progress</div>
+              </div>
+            </figure>
+            <figure class="media-placeholder">
+              <div class="media-box media-box--blur">
+                <img src="call2.jpeg" alt="Call screen 2" loading="lazy" />
+                <div class="early-access-badge" aria-hidden="true">Build in Progress</div>
+              </div>
             </figure>
           </div>
         </section>
@@ -123,8 +124,8 @@
         <section class="product-page info-page" id="faq-block">
           <dl class="faq-list">
             <div class="faq-item">
-              <dt>What is bfyai?</dt>
-              <dd>A personal AI assistant focused on giving you an edge in everyday tasks.</dd>
+              <dt>What is bfya<span class="logo-i">ı</span>?</dt>
+              <dd>bfya<span class="logo-i">ı</span> builds AI-native apps, embedding intelligence into every process for better efficiency and outcomes.</dd>
             </div>
             <div class="faq-item">
               <dt>When can I download the app?</dt>
@@ -132,7 +133,7 @@
             </div>
             <div class="faq-item">
               <dt>Is my data used to train public models?</dt>
-              <dd>We’ll publish a clear privacy policy before launch. Ask us anything via contact.</dd>
+              <dd>No, We’ll publish a clear privacy policy before launch. Ask us anything via contact.</dd>
             </div>
           </dl>
         </section>
@@ -145,29 +146,40 @@
           <span class="section-word section-highlight">Contact</span>
         </h2>
         <section class="product-page info-page" id="contact-block">
-          <div class="contact-grid">
+          <div class="contact-grid contact-grid--three">
             <div class="contact-form-wrap">
               <p class="panel-intro">Reach out — we read every message.</p>
-              <form class="contact-form" action="#" method="post">
+              <form class="contact-form" id="contact-form" onsubmit="submitContactForm(event)">
                 <label>
                   <span>Name</span>
-                  <input type="text" name="name" autocomplete="name" placeholder="Your name" />
+                  <input type="text" name="name" id="field-name" autocomplete="name" placeholder="Your name" required />
                 </label>
                 <label>
                   <span>Email</span>
-                  <input type="email" name="email" autocomplete="email" placeholder="you@example.com" />
+                  <input type="email" name="email" id="field-email" autocomplete="email" placeholder="you@example.com" />
+                </label>
+                <label>
+                  <span>WhatsApp Number</span>
+                  <input type="tel" name="whatsapp" id="field-whatsapp" autocomplete="tel" placeholder="+91 98765 43210" />
                 </label>
                 <label>
                   <span>Message</span>
-                  <textarea name="message" rows="4" placeholder="How can we help?"></textarea>
+                  <textarea name="message" id="field-message" rows="4" placeholder="How can we help?" required></textarea>
                 </label>
                 <button type="submit" class="btn btn-primary">Send message</button>
               </form>
             </div>
 
+            <aside class="contact-side contact-partner" aria-label="Partnership info">
+              <h3 class="contact-side-title">Let's Build Together</h3>
+              <p class="contact-partner-lead">Have an idea? <span class="contact-partner-highlight">We build it for you, end to end.</span></p>
+              <p class="contact-side-copy">Would you like us to be your development partner? We can collaborate at a standard development cost—or explore a partnership or revenue-sharing model with no upfront fees.</p>
+              <p class="contact-partner-connect">Send us a message, we will connect with you.</p>
+            </aside>
+
             <aside class="contact-side" aria-label="App download info">
               <h3 class="contact-side-title">Download our app</h3>
-              <p class="contact-side-copy">Get answers about our app through multilingual chat.</p>
+              <p class="contact-side-copy">Get the app on your device.</p>
               <div class="store-row contact-download-row" role="group" aria-label="App download links">
                 <a href="#" class="store-card store-android" aria-label="Download on Android (link TBD)">
                   <span class="store-icon" aria-hidden="true">
@@ -220,13 +232,35 @@
       <span class="footer-brand">bfya<span class="footer-i">ı</span></span>
       <span class="footer-copy">© <span id="year"></span> — <span class="footer-tagline">built for <span class="footer-you">you</span></span></span>
       <nav class="footer-links" aria-label="Footer links">
-        <a href="#">Terms</a>
-        <a href="#">Policy</a>
-        <a href="#">FAQ</a>
+        <a href="terms.html">Terms</a>
+        <a href="policy.html">Policy</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </footer>
 
   <script src="main.js"></script>
+  <script>
+    function submitContactForm(e) {
+      e.preventDefault();
+      var name     = document.getElementById('field-name').value.trim();
+      var email    = document.getElementById('field-email').value.trim();
+      var whatsapp = document.getElementById('field-whatsapp').value.trim();
+      var message  = document.getElementById('field-message').value.trim();
+
+      var subject = 'New message from ' + (name || 'website visitor');
+      var body = 'Name: ' + name + '\n'
+               + 'Email: ' + (email || '—') + '\n'
+               + 'WhatsApp: ' + (whatsapp || '—') + '\n\n'
+               + 'Message:\n' + message;
+
+      var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
+                   + '&to=YOUR_EMAIL@gmail.com'
+                   + '&su=' + encodeURIComponent(subject)
+                   + '&body=' + encodeURIComponent(body);
+
+      window.open(gmailUrl, '_blank');
+    }
+  </script>
 </body>
 </html>
