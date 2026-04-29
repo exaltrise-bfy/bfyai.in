@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — bfyai</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .legal-hero {
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .legal-hero-label {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .legal-hero-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .legal-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .legal-toc {
+      margin: 0 0 3rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 0.9rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .legal-toc-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 0.75rem;
+    }
+
+    .legal-toc ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.3rem 1.5rem;
+    }
+
+    .legal-toc li {
+      font-size: 0.88rem;
+    }
+
+    .legal-toc a {
+      color: rgba(232,236,244,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .legal-toc a:hover {
+      color: var(--accent);
+    }
+
+    .legal-section {
+      margin-bottom: 2.8rem;
+      scroll-margin-top: calc(var(--header-offset) + 1rem);
+    }
+
+    .legal-section h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.9rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .legal-section h2 .section-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: rgba(94,234,212,0.1);
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legal-section p {
+      margin: 0 0 0.75rem;
+      color: rgba(232,236,244,0.82);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .legal-section ul,
+    .legal-section ol {
+      margin: 0.3rem 0 0.9rem 1.1rem;
+      padding: 0;
+      color: rgba(232,236,244,0.78);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .legal-section li {
+      margin-bottom: 0.3rem;
+    }
+
+    .legal-callout {
+      margin: 1rem 0;
+      padding: 0.9rem 1.1rem;
+      border-left: 3px solid var(--impact);
+      border-radius: 0 0.6rem 0.6rem 0;
+      background: rgba(247,181,0,0.07);
+      color: rgba(232,236,244,0.88);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .legal-callout strong {
+      color: var(--impact);
+    }
+
+    .legal-contact-card {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.8rem;
+      background: rgba(255,255,255,0.03);
+      font-size: 0.93rem;
+      color: rgba(232,236,244,0.82);
+      line-height: 1.8;
+    }
+
+    .legal-contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(94,234,212,0.35);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .legal-contact-card a:hover {
+      color: #fff;
+      border-bottom-color: rgba(94,234,212,0.7);
+    }
+
+    .legal-body .logo-i::after,
+    .legal-hero .logo-i::after {
+      top: 0.18em;
+      width: 0.14em;
+      height: 0.14em;
+    }
+
+    @media (max-width: 600px) {
+      .legal-toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">bfya<span class="logo-i">ı</span></span>
+        <span class="brand-tag">built for <span class="brand-you">you</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu-legal" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobile-menu-legal" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main style="padding-top: var(--header-offset);">
+
+    <div class="legal-hero">
+      <h1>Terms <span style="color:#ffd84d;">&amp;</span> Conditions</h1>
+      <p class="legal-hero-meta">End-User License Agreement (EULA) &nbsp;·&nbsp; Last updated: April 2026</p>
+    </div>
+
+    <div class="legal-body">
+
+      <nav class="legal-toc" aria-label="Table of contents">
+        <p class="legal-toc-title">Contents</p>
+        <ol>
+          <li><a href="#s1">Agreement</a></li>
+          <li><a href="#s2">License to Use</a></li>
+          <li><a href="#s3">App Purpose Disclaimer</a></li>
+          <li><a href="#s4">Offline Data Responsibility</a></li>
+          <li><a href="#s5">SMS &amp; Statement Parsing</a></li>
+          <li><a href="#s6">Advertisements</a></li>
+          <li><a href="#s7">Subscriptions &amp; Billing</a></li>
+          <li><a href="#s8">App Availability</a></li>
+          <li><a href="#s9">Limitation of Liability</a></li>
+          <li><a href="#s10">Indemnification</a></li>
+          <li><a href="#s11">Termination</a></li>
+          <li><a href="#s12">Changes to Agreement</a></li>
+          <li><a href="#s13">Governing Law</a></li>
+          <li><a href="#s14">Contact Information</a></li>
+        </ol>
+      </nav>
+
+      <section class="legal-section" id="s1">
+        <h2><span class="section-num">01</span> Agreement</h2>
+        <p>This End-User License Agreement ("Agreement") is a legal agreement between you ("User", "you") and bfya<span class="logo-i">ı</span> — built for <span class="brand-you">you</span> ("we", "our", "us") for the use of the App.</p>
+        <p>By downloading, installing, or using the App, you agree to be bound by this Agreement.</p>
+        <div class="legal-callout"><strong>If you do not agree, please do not use the App.</strong></div>
+      </section>
+
+      <section class="legal-section" id="s2">
+        <h2><span class="section-num">02</span> License to Use the App</h2>
+        <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes.</p>
+        <p>You may not:</p>
+        <ul>
+          <li>Copy or redistribute the App</li>
+          <li>Reverse engineer or modify the App</li>
+          <li>Resell or sublicense the App</li>
+          <li>Use the App for illegal activities</li>
+        </ul>
+        <p>All rights not expressly granted are reserved by us.</p>
+      </section>
+
+      <section class="legal-section" id="s3">
+        <h2><span class="section-num">03</span> App Purpose Disclaimer</h2>
+        <p>The App is a personal expense tracking tool.</p>
+        <div class="legal-callout">
+          <strong>The App does NOT:</strong><br />
+          · Provide financial advice<br />
+          · Connect to banks<br />
+          · Guarantee financial accuracy
+        </div>
+        <p>All financial decisions are your responsibility. You should not rely on the App as financial, tax, or legal advice.</p>
+      </section>
+
+      <section class="legal-section" id="s4">
+        <h2><span class="section-num">04</span> Offline Data Responsibility</h2>
+        <p>The App stores data locally on your device only. We do not store your data on servers.</p>
+        <p>You acknowledge that:</p>
+        <ul>
+          <li>We cannot access your data</li>
+          <li>We cannot recover lost data</li>
+          <li>Data may be lost if you uninstall the App, lose your device, or reset your phone</li>
+        </ul>
+        <p>You are responsible for your own device backups.</p>
+      </section>
+
+      <section class="legal-section" id="s5">
+        <h2><span class="section-num">05</span> SMS &amp; Bank Statement Parsing Disclaimer</h2>
+        <p>The App may automatically detect transactions from SMS or imported statements.</p>
+        <p>You understand that:</p>
+        <ul>
+          <li>Automatic detection may contain errors</li>
+          <li>Messages may be misinterpreted</li>
+          <li>You must verify all entries manually</li>
+        </ul>
+        <p>We do our best effort to parse correct categorisation. We are not responsible for incorrect categorisation or parsing errors.</p>
+      </section>
+
+      <section class="legal-section" id="s6">
+        <h2><span class="section-num">06</span> Advertisements</h2>
+        <p>The App displays advertisements via Google AdMob. Users may see banner ads and native ads.</p>
+        <p>Paid subscribers may see reduced or limited advertisements.</p>
+        <p>We do not control the content of ads served by third-party advertising networks.</p>
+      </section>
+
+      <section class="legal-section" id="s7">
+        <h2><span class="section-num">07</span> Subscriptions &amp; Billing</h2>
+        <p>Premium features are offered via Google Play Billing. By subscribing, you agree that:</p>
+        <ul>
+          <li>Payments are handled by Google Play</li>
+          <li>Subscriptions renew automatically unless cancelled</li>
+          <li>You must manage or cancel subscriptions via Google Play</li>
+        </ul>
+        <p>We do not handle payments directly.</p>
+      </section>
+
+      <section class="legal-section" id="s8">
+        <h2><span class="section-num">08</span> App Availability</h2>
+        <p>We may modify the App, add or remove features, stop supporting older versions, or discontinue the App at any time. We are not liable for service interruptions.</p>
+      </section>
+
+      <section class="legal-section" id="s9">
+        <h2><span class="section-num">09</span> Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, we are not liable for:</p>
+        <ul>
+          <li>Financial losses</li>
+          <li>Data loss</li>
+          <li>Missed payments or bills</li>
+          <li>Incorrect expense tracking</li>
+          <li>Device or software issues</li>
+          <li>Any indirect or consequential damages</li>
+        </ul>
+        <div class="legal-callout">The App is provided <strong>"AS IS"</strong> without warranties of any kind.</div>
+      </section>
+
+      <section class="legal-section" id="s10">
+        <h2><span class="section-num">10</span> Indemnification</h2>
+        <p>You agree to indemnify and hold us harmless from any claims, damages, or expenses arising from:</p>
+        <ul>
+          <li>Misuse of the App</li>
+          <li>Violation of this Agreement</li>
+          <li>Violation of any laws</li>
+        </ul>
+      </section>
+
+      <section class="legal-section" id="s11">
+        <h2><span class="section-num">11</span> Termination</h2>
+        <p>We may terminate or suspend access to the App if you violate this Agreement or if required by law.</p>
+        <p>You may stop using the App at any time by uninstalling it.</p>
+      </section>
+
+      <section class="legal-section" id="s12">
+        <h2><span class="section-num">12</span> Changes to This Agreement</h2>
+        <p>We may update this Agreement from time to time. Continued use of the App after updates means you accept the revised Agreement.</p>
+      </section>
+
+      <section class="legal-section" id="s13">
+        <h2><span class="section-num">13</span> Governing Law</h2>
+        <p>This Agreement shall be governed by the laws of India, without regard to conflict of law principles.</p>
+      </section>
+
+      <section class="legal-section" id="s14">
+        <h2><span class="section-num">14</span> Contact Information</h2>
+        <div class="legal-contact-card">
+          <strong>Developer / Company:</strong> bfya<span class="logo-i">ı</span> — built for <span class="brand-you">you</span><br />
+          <strong>Email:</strong> <a href="mailto:hello@bfyai.in">hello@bfyai.in</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">bfya<span class="footer-i">ı</span></span>
+      <span class="footer-copy">© <span id="year"></span> — <span class="footer-tagline">built for <span class="footer-you">you</span></span></span>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="terms.html">Terms</a>
+        <a href="policy.html">Policy</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu-legal');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+</body>
+</html>

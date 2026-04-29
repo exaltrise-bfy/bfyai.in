@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — bfyai</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .legal-hero {
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .legal-hero-label {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .legal-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .legal-hero-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .legal-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .legal-toc {
+      margin: 0 0 3rem;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 0.9rem;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .legal-toc-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 0.75rem;
+    }
+
+    .legal-toc ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.3rem 1.5rem;
+    }
+
+    .legal-toc li {
+      font-size: 0.88rem;
+    }
+
+    .legal-toc a {
+      color: rgba(232,236,244,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .legal-toc a:hover {
+      color: var(--accent);
+    }
+
+    .legal-section {
+      margin-bottom: 2.8rem;
+      scroll-margin-top: calc(var(--header-offset) + 1rem);
+    }
+
+    .legal-section h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 0.9rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .legal-section h2 .section-num {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: rgba(94,234,212,0.1);
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legal-section h3 {
+      font-family: var(--font-display);
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: rgba(232,236,244,0.95);
+      margin: 1.1rem 0 0.4rem;
+    }
+
+    .legal-section p {
+      margin: 0 0 0.75rem;
+      color: rgba(232,236,244,0.82);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .legal-section ul,
+    .legal-section ol {
+      margin: 0.3rem 0 0.9rem 1.1rem;
+      padding: 0;
+      color: rgba(232,236,244,0.78);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .legal-section li {
+      margin-bottom: 0.3rem;
+    }
+
+    .legal-callout {
+      margin: 1rem 0;
+      padding: 0.9rem 1.1rem;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 0.6rem 0.6rem 0;
+      background: rgba(94,234,212,0.06);
+      color: rgba(232,236,244,0.88);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .legal-callout strong {
+      color: var(--accent);
+    }
+
+    .legal-callout--warn {
+      border-left-color: var(--impact);
+      background: rgba(247,181,0,0.07);
+    }
+
+    .legal-callout--warn strong {
+      color: var(--impact);
+    }
+
+    .legal-pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1rem;
+    }
+
+    .legal-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3em 0.8em;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      border: 1px solid rgba(94,234,212,0.3);
+      color: var(--accent);
+      background: rgba(94,234,212,0.06);
+    }
+
+    .legal-pill--no {
+      border-color: rgba(251,113,133,0.35);
+      color: #fb7185;
+      background: rgba(251,113,133,0.06);
+    }
+
+    .legal-contact-card {
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.8rem;
+      background: rgba(255,255,255,0.03);
+      font-size: 0.93rem;
+      color: rgba(232,236,244,0.82);
+      line-height: 1.8;
+    }
+
+    .legal-contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(94,234,212,0.35);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .legal-contact-card a:hover {
+      color: #fff;
+      border-bottom-color: rgba(94,234,212,0.7);
+    }
+
+    .legal-body .logo-i::after,
+    .legal-hero .logo-i::after {
+      top: 0.18em;
+      width: 0.14em;
+      height: 0.14em;
+    }
+
+    @media (max-width: 600px) {
+      .legal-toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-name">bfya<span class="logo-i">ı</span></span>
+        <span class="brand-tag">built for <span class="brand-you">you</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu-policy" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobile-menu-policy" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main style="padding-top: var(--header-offset);">
+
+    <div class="legal-hero">
+      <h1>Privacy Policy</h1>
+      <p class="legal-hero-meta">Data Security Statement &nbsp;·&nbsp; Last updated: April 2026</p>
+    </div>
+
+    <div class="legal-body">
+
+      <nav class="legal-toc" aria-label="Table of contents">
+        <p class="legal-toc-title">Contents</p>
+        <ol>
+          <li><a href="#s1">Introduction</a></li>
+          <li><a href="#s2">Core Privacy Principle</a></li>
+          <li><a href="#s3">Permissions Used</a></li>
+          <li><a href="#s4">App Security</a></li>
+          <li><a href="#s5">Data We Don't Collect</a></li>
+          <li><a href="#s6">Advertising (AdMob)</a></li>
+          <li><a href="#s7">Payments &amp; Subscriptions</a></li>
+          <li><a href="#s8">Internet Usage</a></li>
+          <li><a href="#s9">Third-Party Services</a></li>
+          <li><a href="#s10">Data Retention &amp; Backup</a></li>
+          <li><a href="#s11">Children's Privacy</a></li>
+          <li><a href="#s12">User Controls</a></li>
+          <li><a href="#s13">Changes to Policy</a></li>
+          <li><a href="#s14">Contact</a></li>
+        </ol>
+      </nav>
+
+      <section class="legal-section" id="s1">
+        <h2><span class="section-num">01</span> Introduction</h2>
+        <p>This Privacy Policy explains how bfya<span class="logo-i">ı</span> — built for <span class="brand-you">you</span> ("the App", "we", "our", "us") handles user data.</p>
+        <p>The App is an offline-first expense tracker. Financial data remains on your device. The App uses Google Play Billing for subscriptions and Google AdMob to display in-app advertisements.</p>
+      </section>
+
+      <section class="legal-section" id="s2">
+        <h2><span class="section-num">02</span> Core Privacy Principle</h2>
+        <div class="legal-callout">
+          <strong>Your financial data stays on your device.</strong><br />
+          We do not collect, store, transmit, or access your personal financial information.
+        </div>
+        <p>This includes:</p>
+        <div class="legal-pill-grid">
+          <span class="legal-pill--no legal-pill">✕ Expenses</span>
+          <span class="legal-pill--no legal-pill">✕ Bank transactions</span>
+          <span class="legal-pill--no legal-pill">✕ SMS content</span>
+          <span class="legal-pill--no legal-pill">✕ Bank statements</span>
+          <span class="legal-pill--no legal-pill">✕ Budgets</span>
+          <span class="legal-pill--no legal-pill">✕ Financial history</span>
+        </div>
+      </section>
+
+      <section class="legal-section" id="s3">
+        <h2><span class="section-num">03</span> Permissions Used (On-Device Only)</h2>
+
+        <h3>SMS Permission (Optional)</h3>
+        <p>Used to detect bank transaction SMS and automatically create expense entries. Processed entirely on your device — never uploaded or shared.</p>
+
+        <h3>Storage / File Access (Optional)</h3>
+        <p>Used to import bank statements (PDF/CSV). Files are processed locally and never uploaded.</p>
+
+        <h3>Local App Storage</h3>
+        <p>The following is stored locally on your phone only:</p>
+        <ul>
+          <li>Expenses and transactions</li>
+          <li>Budgets and categories</li>
+          <li>Settings</li>
+          <li>App PIN</li>
+        </ul>
+      </section>
+
+      <section class="legal-section" id="s4">
+        <h2><span class="section-num">04</span> App Security</h2>
+        <h3>PIN Protection</h3>
+        <p>The App provides a PIN-based app lock stored locally on your device. We do not have access to your PIN.</p>
+      </section>
+
+      <section class="legal-section" id="s5">
+        <h2><span class="section-num">05</span> Data We Do NOT Collect</h2>
+        <p>We do not collect or store any of the following:</p>
+        <div class="legal-pill-grid">
+          <span class="legal-pill--no legal-pill">✕ Bank account numbers</span>
+          <span class="legal-pill--no legal-pill">✕ Card numbers</span>
+          <span class="legal-pill--no legal-pill">✕ Contacts</span>
+          <span class="legal-pill--no legal-pill">✕ Photos or files</span>
+          <span class="legal-pill--no legal-pill">✕ Location data</span>
+          <span class="legal-pill--no legal-pill">✕ Personal identity data</span>
+          <span class="legal-pill--no legal-pill">✕ Financial data</span>
+        </div>
+      </section>
+
+      <section class="legal-section" id="s6">
+        <h2><span class="section-num">06</span> Advertising (Google AdMob)</h2>
+        <p>The App displays banner or native ads using Google AdMob. Paid subscribers may see reduced or limited advertisements.</p>
+        <p>AdMob may collect:</p>
+        <ul>
+          <li>Advertising ID</li>
+          <li>Device info</li>
+          <li>IP address</li>
+          <li>App interactions</li>
+          <li>Approximate location (via IP)</li>
+        </ul>
+        <p>For full details, see Google's Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--accent);border-bottom:1px solid rgba(94,234,212,0.35);text-decoration:none;">policies.google.com/privacy</a></p>
+      </section>
+
+      <section class="legal-section" id="s7">
+        <h2><span class="section-num">07</span> Payments &amp; Subscriptions</h2>
+        <p>Subscriptions are handled entirely by Google Play Billing. We do not receive or store any payment details.</p>
+      </section>
+
+      <section class="legal-section" id="s8">
+        <h2><span class="section-num">08</span> Internet Usage</h2>
+        <p>Internet access is used only for:</p>
+        <ul>
+          <li>Loading advertisements (AdMob)</li>
+          <li>Verifying subscription status (Google Play)</li>
+        </ul>
+        <p>No financial data is transmitted over the internet.</p>
+      </section>
+
+      <section class="legal-section" id="s9">
+        <h2><span class="section-num">09</span> Third-Party Services</h2>
+        <div class="legal-pill-grid">
+          <span class="legal-pill">Google AdMob</span>
+          <span class="legal-pill">Google Play Billing</span>
+        </div>
+        <p>These services operate under their own privacy policies. We encourage you to review them independently.</p>
+      </section>
+
+      <section class="legal-section" id="s10">
+        <h2><span class="section-num">10</span> Data Retention &amp; Backup</h2>
+        <p>All data is stored locally on your device. We have no access to it.</p>
+        <div class="legal-callout legal-callout--warn">
+          <strong>Important:</strong> If the App is deleted or your device is reset, your data may be lost permanently. Please ensure you maintain your own device backups.
+        </div>
+      </section>
+
+      <section class="legal-section" id="s11">
+        <h2><span class="section-num">11</span> Children's Privacy</h2>
+        <p>The App is not directed to children under the age of 13. We do not knowingly collect any information from children.</p>
+      </section>
+
+      <section class="legal-section" id="s12">
+        <h2><span class="section-num">12</span> User Controls</h2>
+        <p>You have full control over your data. You can:</p>
+        <ul>
+          <li>Disable SMS or storage permissions at any time via device settings</li>
+          <li>Reset all app data from within the App</li>
+          <li>Opt out of personalised ads via your device's advertising settings</li>
+        </ul>
+      </section>
+
+      <section class="legal-section" id="s13">
+        <h2><span class="section-num">13</span> Changes to This Policy</h2>
+        <p>We may update this policy in future app versions. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
+      </section>
+
+      <section class="legal-section" id="s14">
+        <h2><span class="section-num">14</span> Contact</h2>
+        <div class="legal-contact-card">
+          <strong>Developer / Company:</strong> bfya<span class="logo-i">ı</span> — built for <span class="brand-you">you</span><br />
+          <strong>Email:</strong> <a href="mailto:hello@bfyai.in">hello@bfyai.in</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">bfya<span class="footer-i">ı</span></span>
+      <span class="footer-copy">© <span id="year"></span> — <span class="footer-tagline">built for <span class="footer-you">you</span></span></span>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="terms.html">Terms</a>
+        <a href="policy.html">Policy</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu-policy');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+</body>
+</html>
