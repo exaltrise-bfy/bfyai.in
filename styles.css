@@ -273,6 +273,15 @@ main {
   color: rgba(247, 181, 0, 0.95);
 }
 
+.store-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-bottom-color: transparent !important;
+  text-shadow: none !important;
+  transform: none !important;
+}
+
 .store-label {
   font-family: var(--font-display);
   letter-spacing: 0.08em;
