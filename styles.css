@@ -879,6 +879,11 @@ main {
   text-align: left;
 }
 
+.footer-brand,
+.footer-copy {
+  min-width: 0;
+}
+
 .footer-brand {
   font-family: var(--font-display);
   font-weight: 600;
@@ -891,6 +896,20 @@ main {
 
 .footer-you {
   color: #ffd84d;
+}
+
+.footer-contact,
+.footer-contact:visited {
+  color: rgba(232, 236, 244, 0.9);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 216, 77, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.footer-contact:hover,
+.footer-contact:focus-visible {
+  color: #fff;
+  border-bottom-color: rgba(255, 216, 77, 0.85);
 }
 
 .footer-links {
