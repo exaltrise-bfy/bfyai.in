@@ -1,248 +1,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>built for you - Personal SpendsSense</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>bfyai - built for you</title>
+<meta name="description" content="bfyaı is an IT training, consulting and product development company. We help teams learn AI, find where it actually delivers ROI, and build products that ship — practical, not hype. Built for you." />
+<meta property="og:title" content="bfyaı — Practical AI, built for you" />
+<meta property="og:description" content="IT training, consulting and product development. We use AI where it genuinely pays off." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bfyai.in" />
+<link rel="canonical" href="https://bfyai.in" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #7c3aed;
+    --purple-lt: #a78bfa;
+    --purple-dk: #4c1d95;
+    --sky: #38bdf8;
+    --sky-dk: #0284c7;
+    --green: #4ade80;
+    --red: #f87171;
+    --amber: #fbbf24;
+    --bg: #08050f;
+    --surface: #110d1f;
+    --surface2: #1a1432;
+    --border: rgba(124,58,237,0.18);
+    --text: #f1f0f8;
+    --text2: #a09ab8;
+    --text3: #6d6685;
+    --glass: rgba(17,13,31,0.72);
+    --radius: 20px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── BRAND MARK — bfy + small ai + red i ──────── */
+  .bm { font-weight: 800; letter-spacing: -0.3px; }
+  .bm small { font-size: 0.78em; font-weight: 700; }
+  .bm .ri { display: inline-block; position: relative; }
+  .bm .ri::after { content: ''; position: absolute; width: 0.22em; height: 0.22em; background: #ef4444; border-radius: 50%; top: 0.06em; left: 50%; transform: translateX(-50%); }
+
+  /* ── NAV ──────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    backdrop-filter: blur(20px);
+    background: rgba(8,5,15,0.8);
+    border-bottom: 1px solid var(--border);
+    transition: all .3s;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+  .nav-logo-mark {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--purple), var(--sky-dk));
+    font-size: 17px; color: #fff; box-shadow: 0 6px 18px rgba(124,58,237,0.4);
+  }
+  .nav-logo-text { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.3px; line-height: 1.15; }
+  .nav-logo-text .sub { display: block; font-size: 12px; font-weight: 500; color: var(--text2); letter-spacing: 0.4px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--purple), var(--sky-dk));
+    color: #fff; border: none; padding: 9px 20px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none;
+    transition: opacity .2s, transform .2s;
+  }
+  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+  .nav-menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 22px; }
+
+  /* ── BUTTONS ─────────────────────────────── */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--purple), var(--sky-dk));
+    color: #fff; text-decoration: none; border: none;
+    padding: 16px 32px; border-radius: 14px; font-size: 16px; font-weight: 700;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 32px rgba(124,58,237,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,58,237,0.55); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border); text-decoration: none;
+    padding: 16px 32px; border-radius: 14px; font-size: 16px; font-weight: 600;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    transition: background .2s, border-color .2s;
+  }
+  .btn-secondary:hover { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.4); }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 100px 5vw 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 3fr 2.4fr;
+    column-gap: 48px; row-gap: 0; align-items: center;
+    max-width: 1280px; width: 100%;
+  }
+  .hero-badge-wrap, .hero-badge { grid-column: 1; grid-row: 1; align-self: end; }
+  .hero-text { grid-column: 1; grid-row: 2; align-self: start; text-align: left; }
+  .hero-core-wrap-pos { }
+  .hero-inner > .hero-core-wrap { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+  .hero-glow {
+    position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 600px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(124,58,237,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: -5%; right: -10%;
+    width: 500px; height: 400px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(56,189,248,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 13px; font-weight: 600; color: var(--purple-lt);
+    margin-bottom: 24px;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--purple-lt); animation: pulse 2s infinite; }
+  .hero h1 {
+    font-size: clamp(40px, 6.4vw, 82px); font-weight: 900; line-height: 1.05;
+    letter-spacing: -3px; margin-bottom: 24px;
+    animation: fadeUp .7s .1s ease both;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(135deg, var(--purple-lt) 0%, var(--sky) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 1.6vw, 19px); color: var(--text2); max-width: 520px;
+    margin: 0 0 36px; font-weight: 400; line-height: 1.65;
+    animation: fadeUp .7s .2s ease both;
+  }
+  .hero-actions { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+  .hero-trial { margin-top: 18px; font-size: 13px; color: var(--text3); animation: fadeUp .7s .4s ease both; }
+  .hero-trial span { color: var(--green); font-weight: 600; }
+
+  /* ── HERO AI-CORE VISUAL ───────────────────── */
+  .hero-core-wrap {
+    position: relative; width: 100%; max-width: 460px; margin: 0 auto;
+    aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
+    animation: fadeUp .8s .4s ease both;
+  }
+  /* orbit ring the nodes sit on */
+  .hc-orbit {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 78%; height: 78%; border-radius: 50%;
+    border: 1px dashed rgba(124,58,237,0.28);
+  }
+  /* pulsing radar rings from the core */
+  .hc-pulse {
+    position: absolute; top: 50%; left: 50%;
+    width: 150px; height: 150px; border-radius: 50%;
+    border: 1.5px solid rgba(124,58,237,0.5);
+    transform: translate(-50%,-50%);
+  }
+  .hc-pulse.p1 { animation: corePulse 3.2s ease-out infinite; }
+  .hc-pulse.p2 { animation: corePulse 3.2s ease-out 1.05s infinite; }
+  .hc-pulse.p3 { animation: corePulse 3.2s ease-out 2.1s infinite; }
+  @keyframes corePulse {
+    from { transform: translate(-50%,-50%) scale(.55); opacity: .7; }
+    to   { transform: translate(-50%,-50%) scale(2.1); opacity: 0; }
+  }
+  /* central AI core */
+  .hc-core {
+    position: relative; z-index: 3;
+    width: 150px; height: 150px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 35% 30%, var(--purple-lt), var(--purple) 45%, var(--sky-dk) 100%);
+    box-shadow: 0 0 0 6px rgba(124,58,237,0.12), 0 0 60px rgba(124,58,237,0.55);
+    animation: coreFloat 5s ease-in-out infinite;
+  }
+  @keyframes coreFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .hc-core .ai { font-size: 40px; font-weight: 900; letter-spacing: -2px; color: #fff; line-height: 1; }
+  .hc-core .lbl { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-top: 4px; }
+  /* offering nodes */
+  .hc-node {
+    position: absolute; z-index: 4;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); border-radius: 14px;
+    padding: 11px 16px 11px 12px;
+    box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+    transition: transform .3s, border-color .3s;
+  }
+  .hc-node:hover { transform: translateY(-4px) scale(1.04); border-color: rgba(124,58,237,0.5); }
+  .hc-node .ni { width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+  .hc-node .ni.p { background: rgba(124,58,237,0.22); }
+  .hc-node .ni.s { background: rgba(56,189,248,0.18); }
+  .hc-node .ni.g { background: rgba(74,222,128,0.18); }
+  .hc-node strong { display: block; font-size: 14.5px; font-weight: 700; line-height: 1.25; }
+  .hc-node span { font-size: 12px; color: var(--text2); }
+  .hc-node.n-top   { top: 2%;  left: 50%; transform: translateX(-50%); }
+  .hc-node.n-left  { bottom: 12%; left: -4%; }
+  .hc-node.n-right { bottom: 12%; right: -4%; }
+
+  /* ── SECTION SHELL ─────────────────────────── */
+  section.block { padding: 90px 5vw; position: relative; }
+  .block-inner { max-width: 1180px; margin: 0 auto; }
+  .section-label {
+    text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    color: var(--purple-lt); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    text-align: center; font-size: clamp(28px, 4vw, 46px); font-weight: 800;
+    letter-spacing: -1.5px; margin-bottom: 12px;
+  }
+  .section-sub {
+    text-align: center; color: var(--text2); font-size: 16px; max-width: 580px;
+    margin: 0 auto 52px;
+  }
+
+  /* ── OFFERINGS (What we do) ─────────────────── */
+  .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .offer-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 34px 30px;
+    position: relative; overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .offer-card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(135deg, rgba(124,58,237,0.05), transparent);
+  }
+  .offer-card:hover { transform: translateY(-6px); border-color: rgba(124,58,237,0.45); box-shadow: 0 24px 56px rgba(124,58,237,0.16); }
+  .offer-card .ic {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 20px;
+  }
+  .ic.p { background: rgba(124,58,237,0.2); }
+  .ic.s { background: rgba(56,189,248,0.15); }
+  .ic.g { background: rgba(74,222,128,0.15); }
+  .offer-card h3 { font-size: 21px; font-weight: 700; margin-bottom: 10px; }
+  .offer-card > p { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 18px; }
+  .offer-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .offer-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--text2); }
+  .offer-list li .ck { color: var(--green); flex-shrink: 0; font-weight: 700; }
+
+  /* ── PRODUCTS ──────────────────────────────── */
+  .product-row { display: flex; flex-direction: column; gap: 28px; }
+  .product-card {
+    display: grid; grid-template-columns: 300px 1fr; gap: 0;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 24px; overflow: hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .product-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.45); box-shadow: 0 24px 60px rgba(124,58,237,0.18); }
+  .product-media {
+    background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.18) 0%, transparent 70%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px; position: relative;
+  }
+  .product-shot {
+    width: 150px; border-radius: 26px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 24px 56px rgba(0,0,0,0.55);
+    object-fit: cover;
+  }
+  .product-logo {
+    width: 96px; height: 96px; border-radius: 24px; object-fit: cover;
+    border: 2px solid rgba(124,58,237,0.4); box-shadow: 0 18px 44px rgba(124,58,237,0.3);
+  }
+  .product-body { padding: 36px 38px; }
+  .product-status {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+  }
+  .product-status.live { background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3); color: var(--green); }
+  .product-status.soon { background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); color: var(--amber); }
+  .product-status .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .product-body h3 { font-size: 25px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 8px; }
+  .product-body > p { font-size: 14.5px; color: var(--text2); line-height: 1.7; margin-bottom: 18px; max-width: 560px; }
+  .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .product-tags span {
+    font-size: 12px; font-weight: 600; color: var(--purple-lt);
+    background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.25);
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .product-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: #fff; text-decoration: none; font-size: 14px; font-weight: 700;
+    background: linear-gradient(135deg, var(--purple), var(--sky-dk));
+    padding: 11px 22px; border-radius: 12px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .product-link:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(124,58,237,0.4); }
+  .product-link.ghost { background: transparent; border: 1px solid var(--border); color: var(--text2); box-shadow: none; }
+  .product-link.ghost:hover { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.4); color: var(--text); }
+
+  /* ── SOLUTIONS ─────────────────────────────── */
+  .sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .sol-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 26px;
+    transition: transform .3s, border-color .3s;
+  }
+  .sol-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.4); }
+  .sol-card .ic-sm { font-size: 28px; margin-bottom: 14px; display: block; }
+  .sol-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 7px; }
+  .sol-card p { font-size: 13.5px; color: var(--text2); line-height: 1.6; }
+  .sol-card .roi { display: block; margin-top: 12px; font-size: 12px; font-weight: 600; color: var(--green); }
+  .sol-note {
+    max-width: 760px; margin: 40px auto 0; text-align: center;
+    background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.2);
+    border-radius: 16px; padding: 18px 24px; font-size: 14.5px; color: var(--text2);
+  }
+  .sol-note strong { color: var(--green); }
+
+  /* ── ABOUT ─────────────────────────────────── */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .about-text h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; letter-spacing: -1.2px; margin-bottom: 18px; }
+  .about-text h2 .grad { background: linear-gradient(135deg, var(--purple-lt), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .about-text p { font-size: 15.5px; color: var(--text2); line-height: 1.8; margin-bottom: 16px; }
+  .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .value-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px 22px;
+    transition: transform .3s, border-color .3s;
+  }
+  .value-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.4); }
+  .value-card .vi { font-size: 26px; margin-bottom: 10px; }
+  .value-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+  .value-card p { font-size: 13px; color: var(--text2); line-height: 1.55; }
+
+  /* ── WORK TOGETHER ───────────────────────── */
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .work-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 30px 24px; text-align: center;
+    transition: transform .3s, border-color .3s;
+  }
+  .work-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.4); }
+  .work-card-icon { font-size: 32px; margin-bottom: 14px; }
+  .work-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 7px; }
+  .work-card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+  /* ── CTA BANNER ──────────────────────────── */
+  section.cta-banner {
+    padding: 84px 5vw; text-align: center;
+    background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(56,189,248,0.06) 100%);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .cta-banner h2 { font-size: clamp(28px, 4vw, 46px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 12px; }
+  .cta-banner p { font-size: 17px; color: var(--text2); margin-bottom: 34px; }
+
+  /* ── CONTACT ──────────────────────────────── */
+  section.contact { padding: 90px 5vw; }
+  .contact-box { text-align: center; max-width: 620px; margin: 0 auto; }
+  .contact-email {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35);
+    border-radius: 100px; padding: 14px 28px; margin-bottom: 16px;
+    color: var(--purple-lt); font-size: 16px; font-weight: 700; text-decoration: none;
+    transition: background .2s, border-color .2s;
+  }
+  .contact-email:hover { background: rgba(124,58,237,0.28); border-color: rgba(124,58,237,0.6); }
+  .contact-meta { font-size: 13px; color: var(--text3); }
+  .contact-alt { margin-top: 28px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    padding: 52px 5vw 32px;
+    border-top: 1px solid var(--border);
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .footer-brand .nav-logo { margin-bottom: 14px; display: inline-flex; }
+  .footer-brand p { font-size: 13px; color: var(--text3); line-height: 1.7; max-width: 260px; }
+  .footer-col h5 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 14px; letter-spacing: .5px; }
+  .footer-col a { display: block; font-size: 13px; color: var(--text3); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
+  .footer-col a:hover { color: var(--purple-lt); }
+  .footer-bottom {
+    grid-column: 1 / -1; padding-top: 32px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--text3); flex-wrap: wrap; gap: 8px;
+  }
+  .footer-bottom a { color: var(--text3); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--purple-lt); }
+
+  /* ── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MOBILE ──────────────────────────────── */
+  @media (max-width: 900px) {
+    .product-card { grid-template-columns: 1fr; }
+    .product-media { padding: 28px 28px 0; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+    nav.open .nav-links {
+      display: flex; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0;
+      width: 100vw; height: calc(100vh - 64px);
+      background: var(--bg); padding: 32px 7vw; gap: 22px; z-index: 99;
+      align-items: flex-start; overflow-y: auto;
+    }
+    nav.open .nav-links a { font-size: 18px; }
+    .hero { padding: 84px 5vw 48px; justify-content: flex-start; min-height: auto; }
+    /* mobile order: badge → animation → headline/text */
+    .hero-inner { display: flex; flex-direction: column; gap: 0; }
+    .hero-badge { order: 1; align-self: center; margin: 0 0 10px; }
+    .hero-inner > .hero-core-wrap { order: 2; }
+    .hero-text { order: 3; text-align: center; }
+    .hero-sub { margin: 0 auto 28px; }
+    .hero-actions { justify-content: center; }
+    .hero-trial { text-align: center; }
+    /* keep the orbit layout like desktop, scaled down to fit the phone */
+    .hero-core-wrap { max-width: 320px; margin: 0 auto 10px; }
+    .hc-core { width: 96px; height: 96px; }
+    .hc-core .ai { font-size: 28px; }
+    .hc-core .lbl { font-size: 8px; letter-spacing: 1px; }
+    .hc-pulse { width: 96px; height: 96px; }
+    .hc-node { padding: 7px 11px 7px 8px; gap: 7px; border-radius: 11px; }
+    .hc-node .ni { width: 28px; height: 28px; font-size: 14px; border-radius: 8px; }
+    .hc-node strong { font-size: 11.5px; }
+    .hc-node span { font-size: 9.5px; }
+    .hc-node.n-top { top: -3%; }
+    .hc-node.n-left { bottom: 5%; left: -7%; }
+    .hc-node.n-right { bottom: 5%; right: -7%; }
+    section.block { padding: 64px 5vw; }
+  }
+  @media (max-width: 480px) {
+    .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 15px; width: 100%; justify-content: center; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .about-values { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <!-- Background: gradient mesh + noise -->
-  <div class="bg-layer" aria-hidden="true"></div>
-  <div class="bg-noise" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#home" class="brand">
-        <span class="brand-name">bfya<span class="logo-i">ı</span></span>
-        <span class="brand-tag">built for <span class="brand-you">you</span></span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#products">Products</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<!-- ── NAV ─────────────────────────────────────── -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <span class="nav-logo-text"><span class="bm">bfy<small>a<span class="ri">ı</span></small></span><span class="sub">built for you</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#offerings">What we do</a>
+    <a href="#products">Products</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#work" class="nav-cta">Work with us</a>
+  </div>
+  <button class="nav-menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Practical AI · No hype, only what ships
     </div>
-    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-      <a href="#products">Products</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="headline-line">Your <span class="text-highlight">Edge</span>, built with <span class="text-highlight">AI</span></span>
-        </h1>
-        <p class="hero-lead">Personal SpendSense - a bfya<span class="logo-i">ı</span> flagship app</p>
-        <p class="hero-sublead">Get the app on your device.</p>
-        <div class="store-row" role="group" aria-label="App downloads">
-          <a href="#" class="store-card store-android" aria-label="Download on Android (link TBD)">
-            <span class="store-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
-                <rect x="15" y="18" width="18" height="14" rx="6" stroke="currentColor" stroke-width="2"/>
-                <path d="M19 18L16.5 14.5M29 18L31.5 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="21" cy="24" r="1.3" fill="currentColor"/>
-                <circle cx="27" cy="24" r="1.3" fill="currentColor"/>
-              </svg>
-            </span>
-            <span class="store-label">Get on Android</span>
-          </a>
-          <span class="store-card store-ios store-disabled" aria-label="iOS coming soon" aria-disabled="true">
-            <span class="store-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
-                <rect x="18" y="13" width="12" height="22" rx="4" stroke="currentColor" stroke-width="2"/>
-                <circle cx="24" cy="31.2" r="1.2" fill="currentColor"/>
-                <path d="M21 16.8H27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="store-label">Coming Soon for iOS</span>
-          </span>
+    <!-- text -->
+    <div class="hero-text">
+      <h1>Practical <span class="grad">AI</span>,<br/>built for you.</h1>
+      <p class="hero-sub">
+        We're an IT <strong style="color:var(--text)">training</strong>, <strong style="color:var(--text)">consulting</strong> and <strong style="color:var(--text)">product development</strong> company. We help teams learn AI, find where it actually delivers ROI, and build products that ship — applying AI only where it's feasible and genuinely worth it.
+      </p>
+      <div class="hero-actions">
+        <a href="#offerings" class="btn-primary">See what we do →</a>
+        <a href="#work" class="btn-secondary">Work with us</a>
+      </div>
+      <p class="hero-trial"><span>ROI-first.</span> If AI isn't the right answer, we'll tell you.</p>
+    </div>
+
+    <!-- AI-core offerings visual -->
+    <div class="hero-core-wrap" aria-hidden="true">
+      <div class="hc-orbit"></div>
+      <div class="hc-pulse p1"></div>
+      <div class="hc-pulse p2"></div>
+      <div class="hc-pulse p3"></div>
+
+      <div class="hc-core">
+        <span class="ai">AI</span>
+        <span class="lbl">built for you</span>
+      </div>
+
+      <div class="hc-node n-top">
+        <div class="ni p">🎓</div>
+        <div><strong>Training</strong><span>Upskill your team</span></div>
+      </div>
+      <div class="hc-node n-left">
+        <div class="ni s">🧭</div>
+        <div><strong>Consulting</strong><span>Where AI pays off</span></div>
+      </div>
+      <div class="hc-node n-right">
+        <div class="ni g">🚀</div>
+        <div><strong>Products</strong><span>Build &amp; ship</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFERINGS / WHAT WE DO ───────────────────── -->
+<section class="block" id="offerings">
+  <div class="block-inner">
+    <p class="section-label reveal">What we do</p>
+    <h2 class="section-title reveal">Three things, done practically</h2>
+    <p class="section-sub reveal">We keep it honest and grounded. Everything below is built around one rule: do what's feasible and gives a real return.</p>
+
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <div class="ic p">🎓</div>
+        <h3>AI &amp; IT Training</h3>
+        <p>Hands-on, practical training for teams and individuals — real tools and real projects, not slideware.</p>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> LLMs &amp; AI tooling for everyday work</li>
+          <li><span class="ck">✓</span> Modern software development</li>
+          <li><span class="ck">✓</span> Tailored corporate &amp; team programs</li>
+          <li><span class="ck">✓</span> Your people leave able to do the work</li>
+        </ul>
+      </div>
+
+      <div class="offer-card reveal">
+        <div class="ic s">🧭</div>
+        <h3>AI Consulting</h3>
+        <p>We find where AI actually pays off — a clear audit, an honest roadmap, and implementation focused on ROI.</p>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> Opportunity audit &amp; feasibility check</li>
+          <li><span class="ck">✓</span> Roadmap with realistic cost &amp; payoff</li>
+          <li><span class="ck">✓</span> Implementation &amp; integration support</li>
+          <li><span class="ck">✓</span> Straight answers — no hype</li>
+        </ul>
+      </div>
+
+      <div class="offer-card reveal">
+        <div class="ic g">🚀</div>
+        <h3>Product Development</h3>
+        <p>We design, build, and ship real products — web, mobile, and AI-powered apps — from idea to live.</p>
+        <ul class="offer-list">
+          <li><span class="ck">✓</span> Web &amp; mobile apps, end to end</li>
+          <li><span class="ck">✓</span> AI features that earn their place</li>
+          <li><span class="ck">✓</span> Shipped to real users (see our products)</li>
+          <li><span class="ck">✓</span> Maintained and improved over time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ──────────────────────────────────── -->
+<section class="block" id="products" style="background:linear-gradient(180deg, transparent, rgba(124,58,237,0.04), transparent);">
+  <div class="block-inner">
+    <p class="section-label reveal">Products we've shipped</p>
+    <h2 class="section-title reveal">We don't just advise — we build</h2>
+    <p class="section-sub reveal">Real apps, live for real users. The same team that trains and consults builds these.</p>
+
+    <div class="product-row">
+      <!-- Nudge -->
+      <article class="product-card reveal">
+        <div class="product-media">
+          <img src="nudge/icon.png" alt="Nudge Call Manager" class="product-logo" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-status live"><span class="dot"></span> Live on Google Play</span>
+          <h3>Nudge Call Manager</h3>
+          <p>An Android call screener that silences unknown and spam calls before your phone even rings — while your trusted contacts always come through. 100% on-device, no account, no cloud.</p>
+          <div class="product-tags">
+            <span>Android</span><span>On-device AI</span><span>Privacy-first</span><span>Spam screening</span>
+          </div>
+          <a href="nudge/index.html" class="product-link">View product →</a>
+        </div>
+      </article>
+
+      <!-- bfya Assistant -->
+      <article class="product-card reveal">
+        <div class="product-media">
+          <img src="call1.jpeg" alt="bfya personal assistant" class="product-shot" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <span class="product-status soon"><span class="dot"></span> In development</span>
+          <h3>bfya Personal Assistant</h3>
+          <p>A personal call &amp; expense assistant that logs your calls and turns everyday messages into clean, automatic expense insights — multilingual, private, and genuinely practical.</p>
+          <div class="product-tags">
+            <span>Android &amp; iOS</span><span>AI insights</span><span>Expense tracking</span><span>Multilingual</span>
+          </div>
+          <a href="#contact" class="product-link ghost">Get early access →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTIONS ─────────────────────────────────── -->
+<section class="block" id="solutions">
+  <div class="block-inner">
+    <p class="section-label reveal">Solutions we deliver</p>
+    <h2 class="section-title reveal">Where AI earns its keep</h2>
+    <p class="section-sub reveal">Focused, practical solutions for businesses — each one chosen because it solves a real problem and pays for itself.</p>
+
+    <div class="sol-grid">
+      <div class="sol-card reveal">
+        <span class="ic-sm">⚙️</span>
+        <h4>Process Automation</h4>
+        <p>Automate the repetitive, rules-based work that eats your team's hours.</p>
+        <span class="roi">↑ Saves hours every week</span>
+      </div>
+      <div class="sol-card reveal">
+        <span class="ic-sm">💬</span>
+        <h4>Custom AI Assistants</h4>
+        <p>Chatbots and assistants grounded in your own data and documents.</p>
+        <span class="roi">↑ Faster answers, less support load</span>
+      </div>
+      <div class="sol-card reveal">
+        <span class="ic-sm">📊</span>
+        <h4>Data &amp; Insights</h4>
+        <p>Dashboards that turn raw, scattered data into decisions you can act on.</p>
+        <span class="roi">↑ Clarity for better calls</span>
+      </div>
+      <div class="sol-card reveal">
+        <span class="ic-sm">📱</span>
+        <h4>Apps that Ship</h4>
+        <p>Web and mobile applications built to launch fast and scale sensibly.</p>
+        <span class="roi">↑ Idea to live, quickly</span>
+      </div>
+      <div class="sol-card reveal">
+        <span class="ic-sm">🔌</span>
+        <h4>AI Integration</h4>
+        <p>Add AI to the systems and tools you already run — no rip-and-replace.</p>
+        <span class="roi">↑ More value from what you own</span>
+      </div>
+      <div class="sol-card reveal">
+        <span class="ic-sm">🎯</span>
+        <h4>Team Upskilling</h4>
+        <p>Tailored programs that get your people productive with AI fast.</p>
+        <span class="roi">↑ Capability that stays in-house</span>
+      </div>
+    </div>
+
+    <p class="sol-note reveal">We only recommend what's <strong>feasible</strong> and what gives a clear <strong>return</strong>. If a simpler tool beats AI for your case, that's what we'll point you to.</p>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section class="block" id="about" style="background:linear-gradient(180deg, transparent, rgba(124,58,237,0.04), transparent);">
+  <div class="block-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label" style="text-align:left">About us</p>
+        <h2>Built for <span class="grad">you</span> — and built to last.</h2>
+        <p><span class="bm">bfy<small>a<span class="ri">ı</span></small></span> is a small, senior team working across IT training, consulting, and product development. The name says it: <em>built for you</em>, with <em>AI</em> at the core.</p>
+        <p>Our approach is simple — be practical. We use AI where it genuinely helps, ship things that actually work, and measure success by the value you get, not the buzzwords. Everything we recommend has to be feasible and worth the spend.</p>
+        <p>We've shipped real products, trained real teams, and we'd rather tell you the honest answer than sell you the fashionable one.</p>
+      </div>
+      <div class="about-values reveal">
+        <div class="value-card">
+          <div class="vi">🎯</div>
+          <h4>ROI-first</h4>
+          <p>Every recommendation has to earn its cost.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi">🔧</div>
+          <h4>Practical over flashy</h4>
+          <p>We build what works, not what demos well.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi">🚢</div>
+          <h4>We ship</h4>
+          <p>Real products, live for real users.</p>
+        </div>
+        <div class="value-card">
+          <div class="vi">🌏</div>
+          <h4>India, working globally</h4>
+          <p>Senior team, fast and direct to work with.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="products" class="panel">
-      <div class="panel-inner">
-        <h2 class="section-title">
-          <span class="section-word section-highlight">Products</span>
-        </h2>
-
-        <section class="product-page" id="product-expenses">
-          <h3 class="product-page-title">SpendSence</h3>
-          <div class="product-media-grid">
-            <figure class="media-placeholder">
-              <div class="media-box">
-                <img src="expense1.jpeg" alt="Expense screen 1" loading="lazy" />
-              </div>
-            </figure>
-            <figure class="media-placeholder">
-              <div class="media-box">
-                <img src="expense2.jpeg" alt="Expense screen 2" loading="lazy" />
-              </div>
-            </figure>
-          </div>
-        </section>
+<!-- ── WORK TOGETHER ──────────────────────────────── -->
+<section class="block" id="work">
+  <div class="block-inner">
+    <p class="section-label reveal">Work with us</p>
+    <h2 class="section-title reveal">Let's build something together</h2>
+    <p class="section-sub reveal">Whether you want to train a team, scope an idea, or ship a product — a simple message is enough to start. No pitch deck needed.</p>
+    <div class="work-grid">
+      <div class="work-card reveal">
+        <div class="work-card-icon">💡</div>
+        <h4>Have an idea?</h4>
+        <p>An app, a tool, a product? Tell us what you're thinking. We can scope it, estimate it, and build it with you.</p>
       </div>
-    </section>
-
-    <section id="faq" class="panel panel-alt">
-      <div class="panel-inner">
-        <h2 class="section-title">
-          <span class="section-word section-highlight">FAQ</span>
-        </h2>
-        <section class="product-page info-page" id="faq-block">
-          <dl class="faq-list">
-            <div class="faq-item">
-              <dt>What is bfya<span class="logo-i">ı</span>?</dt>
-              <dd>bfya<span class="logo-i">ı</span> builds AI-native apps, embedding intelligence into every process for better efficiency and outcomes.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>When can I download the app?</dt>
-              <dd>Android and iOS links will appear on this page as soon as stores are ready.</dd>
-            </div>
-            <div class="faq-item">
-              <dt>Is my data used to train public models?</dt>
-              <dd>No, We’ll publish a clear privacy policy before launch. Ask us anything via contact.</dd>
-            </div>
-          </dl>
-        </section>
+      <div class="work-card reveal">
+        <div class="work-card-icon">🎓</div>
+        <h4>Train your team</h4>
+        <p>Want your people fluent in AI and modern tooling? We design practical programs around your real workflows.</p>
       </div>
-    </section>
-
-    <section id="contact" class="panel">
-      <div class="panel-inner">
-        <h2 class="section-title">
-          <span class="section-word section-highlight">Contact</span>
-        </h2>
-        <section class="product-page info-page" id="contact-block">
-          <div class="contact-grid contact-grid--three">
-            <div class="contact-form-wrap">
-              <p class="panel-intro">Reach out — we read every message.</p>
-              <form class="contact-form" id="contact-form" onsubmit="submitContactForm(event)">
-                <label>
-                  <span>Name</span>
-                  <input type="text" name="name" id="field-name" autocomplete="name" placeholder="Your name" required />
-                </label>
-                <label>
-                  <span>Email</span>
-                  <input type="email" name="email" id="field-email" autocomplete="email" placeholder="you@example.com" />
-                </label>
-                <label>
-                  <span>WhatsApp Number</span>
-                  <input type="tel" name="whatsapp" id="field-whatsapp" autocomplete="tel" placeholder="+91 98765 43210" />
-                </label>
-                <label>
-                  <span>Message</span>
-                  <textarea name="message" id="field-message" rows="4" placeholder="How can we help?" required></textarea>
-                </label>
-                <button type="submit" class="btn btn-primary">Send message</button>
-              </form>
-            </div>
-
-            <aside class="contact-side contact-partner" aria-label="Partnership info">
-              <h3 class="contact-side-title">Let's Build Together</h3>
-              <p class="contact-partner-lead">Have an idea? <span class="contact-partner-highlight">We build it for you, end to end.</span></p>
-              <p class="contact-side-copy">Would you like us to be your development partner? We can collaborate at a standard development cost—or explore a partnership or revenue-sharing model with no upfront fees.</p>
-              <p class="contact-partner-connect">Send us a message, we will connect with you.</p>
-            </aside>
-
-            <aside class="contact-side" aria-label="App download info">
-              <h3 class="contact-side-title">Download our app</h3>
-              <p class="contact-side-copy">Get the app on your device.</p>
-              <div class="store-row contact-download-row" role="group" aria-label="App download links">
-                <a href="#" class="store-card store-android" aria-label="Download on Android (link TBD)">
-                  <span class="store-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
-                      <rect x="15" y="18" width="18" height="14" rx="6" stroke="currentColor" stroke-width="2"/>
-                      <path d="M19 18L16.5 14.5M29 18L31.5 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      <circle cx="21" cy="24" r="1.3" fill="currentColor"/>
-                      <circle cx="27" cy="24" r="1.3" fill="currentColor"/>
-                    </svg>
-                  </span>
-                  <span class="store-label">Get on Android</span>
-                </a>
-                <span class="store-card store-ios store-disabled" aria-label="iOS coming soon" aria-disabled="true">
-                  <span class="store-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
-                      <rect x="18" y="13" width="12" height="22" rx="4" stroke="currentColor" stroke-width="2"/>
-                      <circle cx="24" cy="31.2" r="1.2" fill="currentColor"/>
-                      <path d="M21 16.8H27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                  </span>
-                  <span class="store-label">Coming Soon for iOS</span>
-                </span>
-              </div>
-            </aside>
-          </div>
-        </section>
+      <div class="work-card reveal">
+        <div class="work-card-icon">🛠️</div>
+        <h4>Need something built?</h4>
+        <p>Share the brief and we'll come back with an honest estimate — feasibility, cost, and payoff, no commitment needed.</p>
       </div>
-    </section>
-  </main>
+      <div class="work-card reveal">
+        <div class="work-card-icon">💬</div>
+        <h4>Just want to talk?</h4>
+        <p>Thinking through something and want a straight second opinion? Drop us a message — no fully formed idea required.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <a class="youtube-fab" href="#" aria-label="Watch on YouTube (set URL later)">
-    <span class="youtube-fab__icon" aria-hidden="true">
-      <svg class="youtube-fab__svg" viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" focusable="false">
-        <rect x="1.5" y="5" width="21" height="14" rx="3.5" fill="#c00" />
-        <path d="M10 8.5v7l6-3.5-6-3.5z" fill="#fff" />
-      </svg>
-    </span>
-    <span class="youtube-fab__text">Watch on YouTube</span>
-  </a>
+<!-- ── CTA BANNER ─────────────────────────────────── -->
+<section class="cta-banner">
+  <h2 class="reveal">Ready to make AI<br/>actually work for you?</h2>
+  <p class="reveal">Training, consulting, or a product to build — let's find what's worth doing.</p>
+  <div class="hero-actions reveal" style="justify-content:center">
+    <a href="#contact" class="btn-primary">Get in touch →</a>
+    <a href="#products" class="btn-secondary">See our products</a>
+  </div>
+</section>
 
-  <div class="lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded product image">
-    <button class="lightbox-close" type="button" aria-label="Close image viewer">×</button>
-    <img class="lightbox-image" src="" alt="" />
+<!-- ── CONTACT ─────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="contact-box">
+    <p class="section-label reveal">Get in touch</p>
+    <h2 class="section-title reveal" style="margin-bottom:16px">We'd love to hear from you</h2>
+    <p class="section-sub reveal" style="margin-bottom:32px">Questions, a project, training for your team, or just want to say hi — drop us a line and we'll get back to you.</p>
+    <a href="mailto:hello@bfyai.in" class="contact-email reveal">
+      <span>✉️</span> hello@bfyai.in
+    </a>
+    <p class="contact-meta reveal">We typically reply within 24 hours · India</p>
+    <div class="contact-alt reveal">
+      <a href="#work" class="btn-secondary">Work with us</a>
+      <a href="nudge/index.html" class="btn-secondary">Explore Nudge →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">
+    <a href="#home" class="nav-logo">
+      <span class="nav-logo-text"><span class="bm">bfy<small>a<span class="ri">ı</span></small></span><span class="sub">built for you</span></span>
+    </a>
+    <p>IT training, consulting &amp; product development. We use AI where it genuinely pays off — practical, ROI-first, built for you.</p>
   </div>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <span class="footer-brand">bfya<span class="footer-i">ı</span></span>
-      <span class="footer-copy">© <span id="year"></span> — <span class="footer-tagline">built for <span class="footer-you">you</span></span> — <a class="footer-contact" href="mailto:hello@bfyai.in">hello@bfyai.in</a></span>
-      <nav class="footer-links" aria-label="Footer links">
-        <a href="terms.html">Terms</a>
-        <a href="policy.html">Policy</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-    </div>
-  </footer>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <a href="#offerings">What we do</a>
+    <a href="#about">About us</a>
+    <a href="#work">Work with us</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-  <script src="main.js"></script>
-  <script>
-    function submitContactForm(e) {
-      e.preventDefault();
-      var name     = document.getElementById('field-name').value.trim();
-      var email    = document.getElementById('field-email').value.trim();
-      var whatsapp = document.getElementById('field-whatsapp').value.trim();
-      var message  = document.getElementById('field-message').value.trim();
+  <div class="footer-col">
+    <h5>Products</h5>
+    <a href="nudge/index.html">Nudge Call Manager</a>
+    <a href="#products">bfya Assistant</a>
+    <a href="#solutions">Solutions</a>
+  </div>
 
-      var subject = 'New message from ' + (name || 'website visitor');
-      var body = 'Name: ' + name + '\n'
-               + 'Email: ' + (email || '—') + '\n'
-               + 'WhatsApp: ' + (whatsapp || '—') + '\n\n'
-               + 'Message:\n' + message;
+  <div class="footer-col">
+    <h5>Connect</h5>
+    <a href="mailto:hello@bfyai.in">hello@bfyai.in</a>
+    <a href="https://www.youtube.com/@NudgeCallManager" target="_blank" rel="noopener">YouTube</a>
+  </div>
 
-      var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
-                   + '&to=YOUR_EMAIL@gmail.com'
-                   + '&su=' + encodeURIComponent(subject)
-                   + '&body=' + encodeURIComponent(body);
+  <div class="footer-bottom">
+    <span>© 2024–2026 <span class="bm">bfy<small>a<span class="ri">ı</span></small></span> · Built for you · All rights reserved</span>
+    <span style="display:flex;align-items:center;gap:16px">
+      <a href="mailto:hello@bfyai.in">hello@bfyai.in</a>
+      <a href="https://www.youtube.com/@NudgeCallManager" target="_blank" rel="noopener" title="YouTube" style="display:inline-flex;align-items:center;color:var(--text3);transition:color .2s" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </span>
+  </div>
+</footer>
 
-      window.open(gmailUrl, '_blank');
-    }
-  </script>
+<script>
+  // ── Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow = window.scrollY > 20
+      ? '0 4px 32px rgba(0,0,0,0.4)' : 'none';
+  });
+
+  // ── Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+  });
+</script>
 </body>
 </html>
